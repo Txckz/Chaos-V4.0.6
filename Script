@@ -93,7 +93,7 @@ end
 
 local Lib = loadstring(game:HttpGet("https://pastebin.com/raw/QtA40U2i",true))()
 local Table = {}
-local x = Lib:CreateWindow("CHA0S MSIL ")
+local x = Lib:CreateWindow("CHA0S Zeta")
 x:Section("Controls")
 
 x:Button("Drop GR (X)",function()
@@ -1501,7 +1501,7 @@ end)
 end)
 
 x:Button("GodMode",function()
-        Notify('Godmode', 'Loaded!',3)
+        Notify('Godmode','Loading... wait 5 sec.',5)
         for _,v in next,plr.PlayerGui:GetChildren() do
             if v:IsA'ScreenGui' and v.Name ~= 'Chat' and v.Name ~= 'BubbleChat' then
                 v.ResetOnSpawn = false
@@ -1549,21 +1549,8 @@ x:Button("GodMode",function()
                 end)
             workspace.CurrentCamera.CameraSubject = char
         end
-        wait(5) do
-game.Players.LocalPlayer.Character.Humanoid.Name = 1
-local l = game.Players.LocalPlayer.Character["1"]:Clone()
-l.Parent = game.Players.LocalPlayer.Character
-l.Name = "Humanoid"
-wait(0.1)
-game.Players.LocalPlayer.Character["1"]:Destroy()
-game.Workspace.CurrentCamera.CameraSubject = game.Players.LocalPlayer.Character
-game.Players.LocalPlayer.Character.Animate.Disabled = true
-wait(0.1)
-game.Players.LocalPlayer.Character.Animate.Disabled = false
-game.Players.LocalPlayer.Character.Humanoid.DisplayDistanceType = "None"
-        Notify('Godmode','Click Again to remove!',5)
-    end
-    end)
+        Notify('Godmode','Godmode loaded',3)
+end)
 
 x:Button("GodMode V2",function()
 Notify('GodMode V2','GodMode With Animations Loaded!',5)
@@ -3190,6 +3177,9 @@ end)
 x:Button("Revolver BOOST (X2) +",function()
 end)
 
+x:Button("GodMode Fixed+",function()
+end)
+
 x:Section("Visualizer")
 
 x:Button("Instructions Click Here!",function()
@@ -3627,15 +3617,19 @@ end)
 x:Section("Credits")
 
 x:Button("Made By Teck",function()
+Notify('Credits!','This GUI was compossed by Teck',15)
 end)
 
 x:Button("Teck#0498",function()
+Notify('Credits!','Discord : Teck#0498',15)
 end)
 
 x:Button("Sniper by KAKOYTO",function()
+Notify('Credits!','*Sniper C* And *GodMode* by KAKOYTO',15)
 end)
 
 x:Button("HideBind (F6)",function()
+Notify('Credits!','Press F6 to hide GUI!',15)
 end)
 
 local Mouse = game.Players.LocalPlayer:GetMouse()
