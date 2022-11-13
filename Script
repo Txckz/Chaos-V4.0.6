@@ -1334,9 +1334,35 @@ x:Button("Crash",function()
                 v.Parent = plr.Character
                 v.RemoteEvent:FireServer(mouse.Hit.LookVector)
                 v.Parent = plr.Backpack
+               end
+            end
+         end)
+                wait(.2)
+            for _,v in next,plr.Backpack:GetChildren() do
+            if v.Name == 'C4' and v:FindFirstChild'RemoteEvent' then
+                v.Parent = plr.Character
+                v:Activate()
+                v.Parent = plr.Backpack
+            end   
+                wait(.3)
+            for _,v in next,plr.Backpack:GetChildren() do
+            if v.Name == 'C4' and v:FindFirstChild'RemoteEvent' then
+                v.Parent = plr.Character
+                v.RemoteEvent:FireServer(mouse.Hit)
+                v.Parent = plr.Backpack
+                end
             end
         end
-    end)
+        wait(.4)
+		for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+            if v.Name == 'C4' and v:FindFirstChild'RemoteEvent' then
+                v.Parent = plr.Character              
+                v.RemoteEvent:FireServer()
+				for i=1,2 do
+					game:GetService("RunService").Heartbeat:Wait()
+				end
+            end
+        end
 
 x:Button("Crash Method (2)",function()
          for i,v in next,plr.Backpack:GetChildren() do
@@ -3624,7 +3650,7 @@ x:Button("Teck#0498",function()
 Notify('Credits!','Discord : Teck#0498',15)
 end)
 
-x:Button("Sniper by KAKOYTO",function()
+x:Button("Sniper, GodMode by KAKOYTO",function()
 Notify('Credits!','*Sniper C* And *GodMode* by KAKOYTO',15)
 end)
 
@@ -3671,7 +3697,7 @@ end
 local bindableFunction= Instance.new("BindableFunction")
  
 game.StarterGui:SetCore("SendNotification", {
-    Title = "CHAOS MSIL";
+    Title = "CHAOS Zeta";
     Text = "Chaos MSIL has been loaded correctly!";
     Icon = "http://www.roblox.com/asset/?id=5585095509";
     Duration = "DURATION IN SECONDS";
