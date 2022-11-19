@@ -211,18 +211,6 @@ plr:GetMouse().KeyDown:Connect(function(key)
                 v.ReplicateRemote:FireServer(tar.Character.HumanoidRootPart.Position)
             end
         end
-    elseif key == 'v' then
-        for _,v in next,plr.Backpack:GetChildren() do
-            if plr.Character and plr.Character:FindFirstChild'Torso' and v.Name == 'Kawaii Revolver' and v:FindFirstChild'ReplicateRemote' and not v:FindFirstChild'ClientCD' and v:FindFirstChild'Barrel' and v.Barrel:FindFirstChild'Attachment' then
-                AddCd(v,2)
-                v.Parent = plr.Character
-                Shoot(v.Barrel.Attachment.WorldPosition,mouse.Hit.p,v)
-                v.ReplicateRemote:FireServer(mouse.Hit.p)
-                v:Activate()
-                rs.Stepped:wait()
-                v.Parent = plr.Backpack
-            end
-        end
     elseif key == 'c' and plr:FindFirstChild'Backpack' then
         local guns = 0
         for _,v in next,plr.Backpack:GetChildren() do
@@ -376,18 +364,6 @@ plr:GetMouse().KeyDown:Connect(function(key)
                 rs.Stepped:wait()
                 Shoot(v.Barrel.Attachment.WorldPosition,tar.Character.HumanoidRootPart.Position,v)
                 v.ReplicateRemote:FireServer(tar.Character.HumanoidRootPart.Position)
-            end
-        end
-    elseif key == 'v' then
-        for _,v in next,plr.Backpack:GetChildren() do
-            if plr.Character and plr.Character:FindFirstChild'Torso' and v.Name == 'Kawaii Revolver' and v:FindFirstChild'ReplicateRemote' and not v:FindFirstChild'ClientCD' and v:FindFirstChild'Barrel' and v.Barrel:FindFirstChild'Attachment' then
-                AddCd(v,2)
-                v.Parent = plr.Character
-                Shoot(v.Barrel.Attachment.WorldPosition,mouse.Hit.p,v)
-                v.ReplicateRemote:FireServer(mouse.Hit.p)
-                v:Activate()
-                rs.Stepped:wait()
-                v.Parent = plr.Backpack
             end
         end
     elseif key == 'c' and plr:FindFirstChild'Backpack' then
@@ -711,18 +687,6 @@ plr:GetMouse().KeyDown:Connect(function(key)
                 v.ReplicateRemote:FireServer(tar.Character.HumanoidRootPart.Position)
             end
         end
-    elseif key == 'v' then
-        for _,v in next,plr.Backpack:GetChildren() do
-            if plr.Character and plr.Character:FindFirstChild'Torso' and v.Name == 'Kawaii Revolver' and v:FindFirstChild'ReplicateRemote' and not v:FindFirstChild'ClientCD' and v:FindFirstChild'Barrel' and v.Barrel:FindFirstChild'Attachment' then
-                AddCd(v,2)
-                v.Parent = plr.Character
-                Shoot(v.Barrel.Attachment.WorldPosition,mouse.Hit.p,v)
-                v.ReplicateRemote:FireServer(mouse.Hit.p)
-                v:Activate()
-                rs.Stepped:wait()
-                v.Parent = plr.Backpack
-            end
-        end
     elseif key == 'c' and plr:FindFirstChild'Backpack' then
         local guns = 0
         for _,v in next,plr.Backpack:GetChildren() do
@@ -846,30 +810,6 @@ plr:GetMouse().KeyDown:Connect(function(key)
                 v.ReplicateRemote:FireServer(tar.Character.HumanoidRootPart.Position)
             end
         end
-    elseif key == 'v' then
-        for _,v in next,plr.Backpack:GetChildren() do
-            if plr.Character and plr.Character:FindFirstChild'Torso' and v.Name == 'Kawaii Revolver' and v:FindFirstChild'ReplicateRemote' and not v:FindFirstChild'ClientCD' and v:FindFirstChild'Barrel' and v.Barrel:FindFirstChild'Attachment' then
-                AddCd(v,2)
-                v.Parent = plr.Character
-                Shoot(v.Barrel.Attachment.WorldPosition,mouse.Hit.p,v)
-                v.ReplicateRemote:FireServer(mouse.Hit.p)
-                v:Activate()
-                rs.Stepped:wait()
-                v.Parent = plr.Backpack
-            end
-        end
-    elseif key == 'c' and plr:FindFirstChild'Backpack' then
-        local guns = 0
-        for _,v in next,plr.Backpack:GetChildren() do
-            if guns<= 10 and plr.Character and plr.Character:FindFirstChild'Head' and v.Name == 'Kawaii Revolver' and not v:FindFirstChild'ClientCD' and v:FindFirstChild'ReplicateRemote' and v:FindFirstChild'Barrel' and v.Barrel:FindFirstChild'Attachment' then
-                guns = guns+1
-                AddCd(v,2)
-                v.Parent = plr.Character
-                Shoot(plr.Character.Head.Position,mouse.Hit.p,v)
-                v.ReplicateRemote:FireServer(mouse.Hit.p)
-                v.Parent = plr.Backpack
-            end
-        end
         elseif key == 'z' then
 		for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
 			if v.Name == "Blood Dagger" then
@@ -903,7 +843,7 @@ plr:GetMouse().KeyDown:Connect(function(key)
 		end
         elseif key == 'x' then
         for i,v in next,plr.Backpack:GetChildren() do
-            if v.Name == 'Grenade' and v:FindFirstChild'RemoteEvent' then
+            if v.Name == 'Grenade' and v:FindFirstChild'RemoteEvent' and plr.Character:FindFirstChild'Head' then
                 v.Parent = plr.Character
                 v.RemoteEvent:FireServer(mouse.Hit.LookVector)
                 wait()
@@ -3502,15 +3442,15 @@ end)
 x:Section("Credits")
 
 x:Button("Made By Teck",function()
-Notify('Credits!','This GUI was compossed by Teck',15)
+Notify('Credits!','This GUI was compossed by Teck!',15)
 end)
 
 x:Button("Teck#0498",function()
 Notify('Credits!','Discord : Teck#0498',15)
 end)
 
-x:Button("Sniper, GodMode by KAKOYTO",function()
-Notify('Credits!','*Sniper C* And *GodMode* by KAKOYTO',15)
+x:Button("Sniper/GodMode by KAKOYTO",function()
+Notify('Credits!','*Sniper C* And *GodMode* by KAKOYTO!',15)
 end)
 
 x:Button("HideBind (F6)",function()
