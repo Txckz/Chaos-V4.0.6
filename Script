@@ -735,17 +735,7 @@ plr:GetMouse().KeyDown:Connect(function(key)
                 v.Parent = plr.Backpack
             end
         end
-    elseif key == 'n' then
-        for i ,v in next,plr.Backpack:GetChildren() do
-            if v.Name == 'Spiked Trap' then
-                v.Parent = plr.Character
-                rs.RenderStepped:wait()
-                wait()
-                mouse1click()
-                v.Parent = plr.Backpack
-            end
-        end
-        elseif key == 'z' then
+    elseif key == 'z' then
 		for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
 			if v.Name == "Pencil" then
 				game.Players.LocalPlayer.Character.Humanoid:EquipTool(v)
@@ -889,6 +879,17 @@ plr:GetMouse().KeyDown:Connect(function(key)
 				end
 			end
 		end
+        elseif key == 'n' then
+		for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+			if v.Name == "Spiked Trap" then
+				game.Players.LocalPlayer.Character.Humanoid:EquipTool(v)
+				v:Activate()
+				mouse1click()
+				for i=1,2 do
+					game:GetService("RunService").Heartbeat:Wait()
+				   end
+			   end
+		   end
         elseif key == 'k' then
 		for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
 			if v.Name == "Chainsaw" then
@@ -2654,7 +2655,7 @@ x:Toggle("Place Traps",{location = Table, flag = "Toggle"},function(bool)
 			if v.Name == "Spiked Trap" then
 				game.Players.LocalPlayer.Character.Humanoid:EquipTool(v)
 				v:Activate()
-				for i=1,3 do
+				for i=1,2 do
 					game:GetService("RunService").Heartbeat:Wait()
 				end
 			end
@@ -3029,151 +3030,6 @@ x:Toggle("Auto Hit (Dagger)",{location = Table, flag = "Toggle"},function(bool)
     end
 end)
 
-x:Section("Spam Weapon")
-local Spamming = false
-x:Toggle("Dupe Mace",{location = Table, flag = "Toggle"},function(bool)
-    if Spamming then
-        Spamming = false
-    else
-        Spamming = true
-        repeat
-            if GetChar():FindFirstChild("Loaded") then
-                GetChar().Loaded:Destroy()
-            end
-            Player.PlayerGui["Menu Screen"].RemoteEvent:FireServer("Mace")
-            game:GetService("RunService").Heartbeat:Wait()
-        until not Spamming
-    end
-end)
-
-local Spamming = false
-x:Toggle("Dupe Chainsaw",{location = Table, flag = "Toggle"},function(bool)
-    if Spamming then
-        Spamming = false
-    else
-        Spamming = true
-        repeat
-            if GetChar():FindFirstChild("Loaded") then
-                GetChar().Loaded:Destroy()
-            end
-            Player.PlayerGui["Menu Screen"].RemoteEvent:FireServer("Chainsaw")
-            game:GetService("RunService").Heartbeat:Wait()
-        until not Spamming
-    end
-end)
-
-local Spamming = false
-x:Toggle("Dupe Knife",{location = Table, flag = "Toggle"},function(bool)
-    if Spamming then
-        Spamming = false
-    else
-        Spamming = true
-        repeat
-            if GetChar():FindFirstChild("Loaded") then
-                GetChar().Loaded:Destroy()
-            end
-            Player.PlayerGui["Menu Screen"].RemoteEvent:FireServer("Knife")
-            game:GetService("RunService").Heartbeat:Wait()
-        until not Spamming
-    end
-end)
-
-local Spamming = false
-x:Toggle("Dupe Pan",{location = Table, flag = "Toggle"},function(bool)
-    if Spamming then
-        Spamming = false
-    else
-        Spamming = true
-        repeat
-            if GetChar():FindFirstChild("Loaded") then
-                GetChar().Loaded:Destroy()
-            end
-            Player.PlayerGui["Menu Screen"].RemoteEvent:FireServer("Pan")
-            game:GetService("RunService").Heartbeat:Wait()
-        until not Spamming
-    end
-end)
-
-local Spamming = false
-x:Toggle("Dupe Pencil",{location = Table, flag = "Toggle"},function(bool)
-    if Spamming then
-        Spamming = false
-    else
-        Spamming = true
-        repeat
-            if GetChar():FindFirstChild("Loaded") then
-                GetChar().Loaded:Destroy()
-            end
-            Player.PlayerGui["Menu Screen"].RemoteEvent:FireServer("Pencil")
-            game:GetService("RunService").Heartbeat:Wait()
-        until not Spamming
-    end
-end)
-
-local Spamming = false
-x:Toggle("Dupe Bat",{location = Table, flag = "Toggle"},function(bool)
-    if Spamming then
-        Spamming = false
-    else
-        Spamming = true
-        repeat
-            if GetChar():FindFirstChild("Loaded") then
-                GetChar().Loaded:Destroy()
-            end
-            Player.PlayerGui["Menu Screen"].RemoteEvent:FireServer("Baseball Bat")
-            game:GetService("RunService").Heartbeat:Wait()
-        until not Spamming
-    end
-end)
-
-local Spamming = false
-x:Toggle("Dupe Scythe",{location = Table, flag = "Toggle"},function(bool)
-    if Spamming then
-        Spamming = false
-    else
-        Spamming = true
-        repeat
-            if GetChar():FindFirstChild("Loaded") then
-                GetChar().Loaded:Destroy()
-            end
-            Player.PlayerGui["Menu Screen"].RemoteEvent:FireServer("Scythe")
-            game:GetService("RunService").Heartbeat:Wait()
-        until not Spamming
-    end
-end)
-
-local Spamming = false
-x:Toggle("Dupe Sword",{location = Table, flag = "Toggle"},function(bool)
-    if Spamming then
-        Spamming = false
-    else
-        Spamming = true
-        repeat
-            if GetChar():FindFirstChild("Loaded") then
-                GetChar().Loaded:Destroy()
-            end
-            Player.PlayerGui["Menu Screen"].RemoteEvent:FireServer("Emerald Greatsword")
-            game:GetService("RunService").Heartbeat:Wait()
-        until not Spamming
-    end
-end)
-
-local Spamming = false
-x:Toggle("Dupe Dagger",{location = Table, flag = "Toggle"},function(bool)
-    if Spamming then
-        Spamming = false
-    else
-        Spamming = true
-        repeat
-            if GetChar():FindFirstChild("Loaded") then
-                GetChar().Loaded:Destroy()
-            end
-            Player.PlayerGui["Menu Screen"].RemoteEvent:FireServer("Blood Dagger")
-            game:GetService("RunService").Heartbeat:Wait()
-        until not Spamming
-    end
-end)
-
 x:Section("Gui Logs")
 
 x:Button("C4/GR Keep dropping +",function()
@@ -3204,6 +3060,9 @@ x:Button("Revolver BOOST (X2) +",function()
 end)
 
 x:Button("GodMode Fixed+",function()
+end)
+
+x:Button("PlaceTraps Fixed+",function()
 end)
 
 x:Section("Visualizer")
