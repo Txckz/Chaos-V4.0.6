@@ -93,7 +93,7 @@ end
 
 local Lib = loadstring(game:HttpGet("https://pastebin.com/raw/QtA40U2i",true))()
 local Table = {}
-local x = Lib:CreateWindow("CHA0S Zeta")
+local x = Lib:CreateWindow("CH40S V4.0.6")
 x:Section("Controls")
 
 x:Button("Drop GR (X)",function()
@@ -161,6 +161,14 @@ x:Button("Drop C4/GR Normal (B)",function()
 end)
 
 x:Button("Drop GR/C4 Nil (U)",function()
+		for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+			if v.Name == "Grenade" and plr.Character:FindFirstChild'Right Arm' then
+				game.Players.LocalPlayer.Character.Humanoid:EquipTool(v)
+				v:Activate(mouse.Hit.LookVector)
+                rs.Stepped:wait()
+				game:GetService("RunService").Heartbeat:Wait()
+              end
+          end
 end)
 
 x:Button("Drop GR/C4 Lag (P)",function()
@@ -268,13 +276,13 @@ plr:GetMouse().KeyDown:Connect(function(key)
 			end
          end
         elseif key == "u" then
-        for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-         if v.Name == 'C4' or 'Grenade' and v:FindFirstChild'RemoteEvent' then
-                v.Parent = plr.Character              
-                game.Players.LocalPlayer.Character.Humanoid:EquipTool(v)
-               v.RemoteEvent:FireServer(mouse.Hit)
-            game:GetService("RunService").Heartbeat:Wait()
-            end
+		for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+			if v.Name == "Grenade" and plr.Character:FindFirstChild'Right Arm' then
+				game.Players.LocalPlayer.Character.Humanoid:EquipTool(v)
+				v:Activate(mouse.Hit.LookVector)
+                rs.Stepped:wait()
+				game:GetService("RunService").Heartbeat:Wait()
+              end
         end
     elseif key == 'l' and plr.Character then
         if not dupping then
@@ -413,14 +421,14 @@ plr:GetMouse().KeyDown:Connect(function(key)
 			end
          end
         elseif key == "u" then
-        for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-         if v.Name == 'C4' or 'Grenade' and v:FindFirstChild'RemoteEvent' then
-                v.Parent = plr.Character              
-                game.Players.LocalPlayer.Character.Humanoid:EquipTool(v)
-                v.RemoteEvent:FireServer(mouse.Hit)
-            game:GetService("RunService").Heartbeat:Wait()
-            end
-        end
+		for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+			if v.Name == "Grenade" and plr.Character:FindFirstChild'Right Arm' then
+				game.Players.LocalPlayer.Character.Humanoid:EquipTool(v)
+				v:Activate(mouse.Hit.LookVector)
+                rs.Stepped:wait()
+				game:GetService("RunService").Heartbeat:Wait()
+              end
+          end
     elseif key == 'l' and plr.Character then
         if not dupping then
             Notify('Dupping 2','Wait 5 Sec',0)
@@ -558,14 +566,14 @@ plr:GetMouse().KeyDown:Connect(function(key)
 			end
          end
         elseif key == "u" then
-        for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-         if v.Name == 'C4' or 'Grenade' and v:FindFirstChild'RemoteEvent' then
-                v.Parent = plr.Character              
-                game.Players.LocalPlayer.Character.Humanoid:EquipTool(v)
-                v.RemoteEvent:FireServer(mouse.Hit)
-            game:GetService("RunService").Heartbeat:Wait()
-            end
-        end
+		for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+			if v.Name == "Grenade" and plr.Character:FindFirstChild'Right Arm' then
+				game.Players.LocalPlayer.Character.Humanoid:EquipTool(v)
+				v:Activate(mouse.Hit.LookVector)
+                rs.Stepped:wait()
+				game:GetService("RunService").Heartbeat:Wait()
+              end
+          end
     elseif key == 'l' and plr.Character then
         if not dupping then
             Notify('Dupping 1','Wait 5 Sec',0)
@@ -703,15 +711,15 @@ plr:GetMouse().KeyDown:Connect(function(key)
 			end
          end
         elseif key == "u" then
-        for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-         if v.Name == 'C4' or 'Grenade' and v:FindFirstChild'RemoteEvent' then
-                v.Parent = plr.Character              
-                game.Players.LocalPlayer.Character.Humanoid:EquipTool(v)
-                v.RemoteEvent:FireServer(mouse.Hit)
-            game:GetService("RunService").Heartbeat:Wait()
-            end
-        end
-end
+		for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+			if v.Name == "Grenade" and plr.Character:FindFirstChild'Right Arm' then
+				game.Players.LocalPlayer.Character.Humanoid:EquipTool(v)
+				v:Activate(mouse.Hit.LookVector)
+                rs.Stepped:wait()
+				game:GetService("RunService").Heartbeat:Wait()
+              end
+          end
+      end
 end)
 
 plr:GetMouse().KeyDown:Connect(function(key)
@@ -825,15 +833,15 @@ plr:GetMouse().KeyDown:Connect(function(key)
 			end
          end
         elseif key == "u" then
-        for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-         if v.Name == 'C4' or 'Grenade' and v:FindFirstChild'RemoteEvent' then
-                v.Parent = plr.Character              
-                game.Players.LocalPlayer.Character.Humanoid:EquipTool(v)
-                v.RemoteEvent:FireServer(mouse.Hit)
-            game:GetService("RunService").Heartbeat:Wait()
-            end
-        end
-end
+		for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+			if v.Name == "Grenade" and plr.Character:FindFirstChild'Right Arm' then
+				game.Players.LocalPlayer.Character.Humanoid:EquipTool(v)
+				v:Activate(mouse.Hit.LookVector)
+                rs.Stepped:wait()
+				game:GetService("RunService").Heartbeat:Wait()
+              end
+          end
+      end
 end)
 
 x:Button("STools (L)",function()
@@ -848,7 +856,7 @@ end)
 x:Button("Drop GR/C4 Lag (P)",function()
 end)
 
-x:Button("Drop GR/C4 Nil (U)",function()
+x:Button("Drop GR/C4 Combo (U)",function()
 end)
 
 x:Section("Main Features")
@@ -3403,8 +3411,8 @@ end
 local bindableFunction= Instance.new("BindableFunction")
  
 game.StarterGui:SetCore("SendNotification", {
-    Title = "CHAOS Zeta";
-    Text = "Chaos MSIL has been loaded correctly!";
+    Title = "CH40S V4.0.6";
+    Text = "CH40S V4.0.6 has been loaded correctly!";
     Icon = "http://www.roblox.com/asset/?id=5585095509";
     Duration = "DURATION IN SECONDS";
     callbakc = bindableFunction;
