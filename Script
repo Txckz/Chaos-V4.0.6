@@ -3356,7 +3356,7 @@ end)
 
 x:Section("Credits")
 
-x:Button("Made By Teck",function()
+x:Button("Made by Teck",function()
 Notify('Credits!','This GUI was compossed by Teck!',15)
 end)
 
@@ -3364,7 +3364,7 @@ x:Button("Teck#0498",function()
 Notify('Credits!','Discord : Teck#0498',15)
 end)
 
-x:Button("Sniper/GodMode by KAKOYTO",function()
+x:Button("God/Sniper by KAKOYTO",function()
 Notify('Credits!','*Sniper C* And *GodMode* by KAKOYTO!',15)
 end)
 
