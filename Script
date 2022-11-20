@@ -243,16 +243,6 @@ plr:GetMouse().KeyDown:Connect(function(key)
 				end
 			end
 		end
-        elseif key == 'x' then
-        for i,v in next,plr.Backpack:GetChildren() do
-            if v.Name == 'Grenade' and v:FindFirstChild'RemoteEvent' then
-                v.Parent = plr.Character
-                v.RemoteEvent:FireServer(mouse.Hit.LookVector)
-                wait()
-                mouse1click()
-                v.Parent = plr.Backpack
-            end
-        end
         elseif key == 'b' then
          for i,v in next,plr.Backpack:GetChildren() do
          if v.Name == 'C4' or 'Grenade' and v:FindFirstChild'RemoteEvent' then
@@ -398,15 +388,6 @@ plr:GetMouse().KeyDown:Connect(function(key)
 				end
 			end
 		end
-        elseif key == 'x' then
-        for _,v in next,plr.Backpack:GetChildren() do
-             if plr.Character:FindFirstChild'Right Arm' and v.Name == 'Grenade' and v:FindFirstChild'RemoteEvent' then
-                v.Parent = plr.Character
-                v.RemoteEvent:FireServer(mouse.Hit.LookVector)
-                wait()
-                v.Parent = plr.Backpack
-            end
-         end
         elseif key == 'b' then
          for i,v in next,plr.Backpack:GetChildren() do
          if v.Name == 'Grenade' or "C4" and v:FindFirstChild'RemoteEvent' then
@@ -564,28 +545,6 @@ plr:GetMouse().KeyDown:Connect(function(key)
 				end
 			end
 		end
-        elseif key == 'x' then
-        for i,v in next,plr.Backpack:GetChildren() do
-            if v.Name == 'Grenade' and v:FindFirstChild'RemoteEvent' then
-                v.Parent = plr.Character
-                v.RemoteEvent:FireServer(mouse.Hit.LookVector)
-                rs.RenderStepped:wait()
-                mouse1click()
-                v.Parent = plr.Backpack
-            end
-        end
-        elseif key == 'b' then
-         for i,v in next,plr.Backpack:GetChildren() do
-         if v.Name == 'C4' or 'Grenade' and v:FindFirstChild'RemoteEvent' then
-                v.Parent = plr.Character
-                for i=1,1 do
-                v.RemoteEvent:FireServer(mouse.Hit.LookVector)
-                rs.RenderStepped:wait()
-                mouse1click()
-                v.Parent = plr.Backpack
-            end
-        end 
-        end
         elseif key == "p" then
 		for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
          if v.Name == 'C4' or 'Grenade' and v:FindFirstChild'RemoteEvent' then
@@ -719,16 +678,6 @@ plr:GetMouse().KeyDown:Connect(function(key)
 				end
 			end
 		end
-        elseif key == 'x' then
-        for i,v in next,plr.Backpack:GetChildren() do
-            if v.Name == 'Grenade' and v:FindFirstChild'RemoteEvent' then
-                v.Parent = plr.Character
-                v.RemoteEvent:FireServer(mouse.Hit.LookVector)
-                wait()
-                mouse1click()
-                v.Parent = plr.Backpack
-            end
-        end
         elseif key == 'b' then
          for i,v in next,plr.Backpack:GetChildren() do
          if v.Name == 'C4' or 'Grenade' and v:FindFirstChild'RemoteEvent' then
@@ -843,14 +792,14 @@ plr:GetMouse().KeyDown:Connect(function(key)
 		end
         elseif key == 'x' then
         for i,v in next,plr.Backpack:GetChildren() do
-            if v.Name == 'Grenade' and v:FindFirstChild'RemoteEvent' and plr.Character:FindFirstChild'Head' then
+            if v.Name == 'Grenade' and v:FindFirstChild'RemoteEvent' and plr.Character:FindFirstChild'Right Leg' then
                 v.Parent = plr.Character
                 v.RemoteEvent:FireServer(mouse.Hit.LookVector)
-                wait()
+                rs.RenderStepped:wait()
                 mouse1click()
                 v.Parent = plr.Backpack
             end
-        end
+            end
         elseif key == 'b' then
          for i,v in next,plr.Backpack:GetChildren() do
          if v.Name == 'C4' or 'Grenade' and v:FindFirstChild'RemoteEvent' then
@@ -1270,50 +1219,8 @@ x:Button("Nuke",function()
     end)
 
 x:Button("Crash",function()
-        for _,v in next,plr.Backpack:GetChildren() do
-            if v.Name == 'C4' and v:FindFirstChild'RemoteEvent' then
-                v.Parent = plr.Character
-                v.RemoteEvent:FireServer(mouse.Hit.LookVector)
-                v.Parent = plr.Backpack
-               end
-            end
-         end)
-                wait(.2)
-            for _,v in next,plr.Backpack:GetChildren() do
-            if v.Name == 'C4' and v:FindFirstChild'RemoteEvent' then
-                v.Parent = plr.Character
-                v:Activate()
-                v.Parent = plr.Backpack
-            end   
-                wait(.3)
-            for _,v in next,plr.Backpack:GetChildren() do
-            if v.Name == 'C4' and v:FindFirstChild'RemoteEvent' then
-                v.Parent = plr.Character
-                v.RemoteEvent:FireServer(mouse.Hit)
-                v.Parent = plr.Backpack
-                end
-            end
-        end
-        wait(.4)
-		for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-            if v.Name == 'C4' and v:FindFirstChild'RemoteEvent' then
-                v.Parent = plr.Character              
-                v.RemoteEvent:FireServer()
-				for i=1,2 do
-					game:GetService("RunService").Heartbeat:Wait()
-				end
-            end
-        end
-
-x:Button("Crash Method (2)",function()
-         for i,v in next,plr.Backpack:GetChildren() do
-         if v.Name == 'C4' or 'Grenade' and v:FindFirstChild'RemoteEvent' then
-                v.Parent = plr.Character
-                v.RemoteEvent:FireServer(mouse.Hit.LookVector)
-                v.Parent = plr.Backpack
-            end
-        end
-    end)
+Notify('Crash Coming Soon!','Pending Fixes!',10)
+end)
 
 x:Button("Safe mode (Anti-ban)",function()
 Y = hookmetamethod(game,"__namecall",function(self,...)
