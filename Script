@@ -1226,8 +1226,74 @@ x:Button("Nuke",function()
         end
     end)
 
-x:Button("Crash",function()
-Notify('Crash Coming Soon!','Pending Fixes!',10)
+x:Button("Lag Server",function()
+        if not dupping then
+            Notify('Wait..','Loaded!',2)
+            Notify('WARN!','Click One to stop!!',5)
+            spawn(function()
+                dupping = true
+                local c = 1
+                for i = 1,80 do
+                    pcall(function()
+                        if c>#rep.Weapons:GetChildren() then
+                            c = 1
+                        end
+                    end)
+                    for _,v in next,plr.Character:GetChildren() do
+                        if v.Name == 'Loaded' and v:IsA'IntValue' then
+                            v:Destroy()
+                        end
+                    end
+                    for _,v in next,plr.PlayerGui:GetDescendants() do
+                        if v:IsA'RemoteEvent' and v.Name == 'RemoteEvent' then
+                            pcall(function()
+                                v:FireServer(rep.Weapons:GetChildren()[c].Name)
+                                c=c+1
+                            end)
+                        end
+                    end
+                    wait(0)
+                end
+                Notify('Ready..','Done!',0)
+                dupping = false
+            end)
+        else Notify('Dupping','Already dupping',0)
+        end
+    wait(5) -- It stop to dupe
+game.Players.LocalPlayer.Character["Right Arm"]:Destroy()
+wait() -- Delete Arm
+for _,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+    v.Parent = game.Players.LocalPlayer.Character
+end
+
+for _,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+    if v.ClassName == "Tool" then
+x = Instance.new("")
+s = Instance.new("")
+v.Handle.CanCollide = true
+x.Parent = v.Handle
+s.Parent = game.Players.LocalPlayer.Character.HumanoidRootPart
+s.Attachment1 = game.Players.LocalPlayer.Character["Right Arm"].RightGripAttachment
+s.Attachment0 = v.Handle.Attachment
+s.Length = 100
+s.Visible = true
+wait()
+end
+end
+
+for _,v in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
+    if v.Name == "RightGrip" then
+        v:Destroy()
+    end
+end
+
+while wait() do
+    for _,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+        if v.ClassName == "Tool" then
+            v.Handle.Velocity = Vector3.new(math.random(-100, 100), 5, math.random(-100, 100))
+        end
+    end
+end
 end)
 
 x:Button("Safe mode (Anti-ban)",function()
@@ -2918,6 +2984,9 @@ x:Button("GodMode Fixed+",function()
 end)
 
 x:Button("PlaceTraps Fixed+",function()
+end)
+
+x:Button("Lag Added+",function()
 end)
 
 x:Section("Visualizer")
