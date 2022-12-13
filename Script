@@ -97,11 +97,11 @@ local x = Lib:CreateWindow("CH40S V4.0.6")
 x:Section("Controls")
 
 x:Button("Drop GR (X)",function()
-        wait()
         for _,v in next,plr.Backpack:GetChildren() do
-             if plr.Character:FindFirstChild'Right Arm' and v.Name == 'Grenade' and v:FindFirstChild'RemoteEvent' then
+             if plr.Character:FindFirstChild'Right Arm' and v.Name == 'Grenade' and v.Name == 'C4' and v:FindFirstChild'RemoteEvent' then
                 v.Parent = plr.Character
                 v.RemoteEvent:FireServer(mouse.Hit.LookVector)
+                v:Activate()
                 wait()
                 v.Parent = plr.Backpack
             end
@@ -1216,74 +1216,19 @@ x:Button("Nuke",function()
       end
  end
 end)
-x:Button("Lag Server",function()
-        if not dupping then
-            Notify('Wait..','Loaded!',2)
-            Notify('WARN!','Click One to stop!!',5)
-            spawn(function()
-                dupping = true
-                local c = 1
-                for i = 1,80 do
-                    pcall(function()
-                        if c>#rep.Weapons:GetChildren() then
-                            c = 1
-                        end
-                    end)
-                    for _,v in next,plr.Character:GetChildren() do
-                        if v.Name == 'Loaded' and v:IsA'IntValue' then
-                            v:Destroy()
-                        end
-                    end
-                    for _,v in next,plr.PlayerGui:GetDescendants() do
-                        if v:IsA'RemoteEvent' and v.Name == 'RemoteEvent' then
-                            pcall(function()
-                                v:FireServer(rep.Weapons:GetChildren()[c].Name)
-                                c=c+1
-                            end)
-                        end
-                    end
-                    wait(0)
-                end
-                Notify('Ready..','Done!',0)
-                dupping = false
-            end)
-        else Notify('Dupping','Already dupping',0)
-        end
-    wait(5) -- It stop to dupe
-game.Players.LocalPlayer.Character["Right Arm"]:Destroy()
-wait() -- Delete Arm
-for _,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-    v.Parent = game.Players.LocalPlayer.Character
-end
 
-for _,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
-    if v.ClassName == "Tool" then
-x = Instance.new("")
-s = Instance.new("")
-v.Handle.CanCollide = true
-x.Parent = v.Handle
-s.Parent = game.Players.LocalPlayer.Character.HumanoidRootPart
-s.Attachment1 = game.Players.LocalPlayer.Character["Right Arm"].RightGripAttachment
-s.Attachment0 = v.Handle.Attachment
-s.Length = 100
-s.Visible = true
-wait()
-end
-end
-
-for _,v in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
-    if v.Name == "RightGrip" then
-        v:Destroy()
-    end
-end
-
-while wait() do
-    for _,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
-        if v.ClassName == "Tool" then
-            v.Handle.Velocity = Vector3.new(math.random(-100, 100), 5, math.random(-100, 100))
-        end
-    end
-end
+x:Button("Crash (Fixed!)",function()
+         for i,v in next,plr.Backpack:GetChildren() do
+         if v.Name == 'C4' or 'Grenade' and v:FindFirstChild'RemoteEvent' then
+                v.Parent = plr.Character
+                for i=1,1 do
+                v.RemoteEvent:FireServer(mouse.Hit.LookVector)
+                v:Clone()
+                mouse1click()
+                v.Parent = plr.Backpack
+            end
+      end
+ end
 end)
 
 x:Button("Safe mode (Anti-ban)",function()
@@ -2976,7 +2921,7 @@ end)
 x:Button("PlaceTraps Fixed+",function()
 end)
 
-x:Button("Lag Added+",function()
+x:Button("Crash Fixed+",function()
 end)
 
 x:Section("Visualizer")
