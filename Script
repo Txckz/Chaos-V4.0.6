@@ -504,7 +504,7 @@ plr:GetMouse().KeyDown:Connect(function(key)
                 AddCd(v,2)
                 v.Parent = plr.Character
                 Shoot(v.Barrel.Attachment.WorldPosition,mouse.Hit.p,v)
-                v:Activate()
+                mouse2click()
                 rs.Stepped:wait()
                 v.Parent = plr.Backpack
             end
