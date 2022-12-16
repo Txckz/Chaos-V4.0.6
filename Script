@@ -1210,7 +1210,7 @@ x:Button("Nuke",function()
                 v.Parent = plr.Character
                 for i=1,1 do
                 v.RemoteEvent:FireServer(mouse.Hit.LookVector)
-                mouse1click()
+                mouse2click()
                 v.Parent = plr.Backpack
             end
       end
@@ -1224,7 +1224,7 @@ x:Button("Crash (Fixed!)",function()
                 for i=1,1 do
                 v.RemoteEvent:FireServer(mouse.Hit.LookVector)
                 v:Clone()
-                mouse1click()
+                mouse2click()
                 v.Parent = plr.Backpack
             end
       end
