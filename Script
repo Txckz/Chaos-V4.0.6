@@ -663,6 +663,17 @@ plr:GetMouse().KeyDown:Connect(function(key)
 				end
 			end
 		end
+        elseif key == 'g' then
+                 for i,v in next,plr.Backpack:GetChildren() do
+         if v.Name == 'C4' or 'Grenade' and v:FindFirstChild'RemoteEvent' then
+                v.Parent = plr.Character
+                for i=1,1 do
+                v.RemoteEvent:FireServer(mouse.Hit.LookVector)
+                mouse2click()
+                v.Parent = plr.Backpack
+            end
+      end
+      end
         elseif key == 'k' then
 		for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
 			if v.Name == "Chainsaw" then
@@ -1204,7 +1215,7 @@ x:Button("Night",function()
 game.Lighting:SetMinutesAfterMidnight(0)
 end)
 
-x:Button("Nuke",function()
+x:Button("Crash",function()
          for i,v in next,plr.Backpack:GetChildren() do
          if v.Name == 'C4' or 'Grenade' and v:FindFirstChild'RemoteEvent' then
                 v.Parent = plr.Character
@@ -1217,13 +1228,12 @@ x:Button("Nuke",function()
  end
 end)
 
-x:Button("Crash (Fixed!)",function()
+x:Button("Nuke",function()
          for i,v in next,plr.Backpack:GetChildren() do
-         if v.Name == 'C4' or 'Grenade' and v:FindFirstChild'RemoteEvent' then
+         if v.Name == 'Grenade' and v:FindFirstChild'RemoteEvent' then
                 v.Parent = plr.Character
                 for i=1,1 do
                 v.RemoteEvent:FireServer(mouse.Hit.LookVector)
-                v:Clone()
                 mouse2click()
                 v.Parent = plr.Backpack
             end
