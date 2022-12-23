@@ -91,10 +91,12 @@ local function Shoot(firstPos,nextPos,Revolver)
     end
 end
 
-local Lib = loadstring(game:HttpGet("https://pastebin.com/raw/EbvHc6tE",true))()
+local Lib = loadstring(game:HttpGet("https://pastebin.com/raw/BJE6ZcKr", true))()
 local Table = {}
-local x = Lib:CreateWindow("CH40S v4.1.0*CR*")
+local x = Lib:CreateWindow("CH40S v4.1.0")
 x:Section("Controls")
+
+x:Search(Color3.fromRGB(255,0,255) --[[nil = Yellow]]) -- Ez searcher for if you have a lot of things
 
 x:Button("Drop GR (X)",function()
         for _,v in next,plr.Backpack:GetChildren() do
