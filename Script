@@ -385,6 +385,18 @@ plr:GetMouse().KeyDown:Connect(function(key)
 				end
 			end
 		end
+        elseif key == 'x' then
+         for i,v in next,plr.Backpack:GetChildren() do
+         if v.Name == 'Grenade' and v:FindFirstChild'RemoteEvent' then
+                v.Parent = plr.Character
+                for i=1,1 do
+                v.RemoteEvent:FireServer(mouse.Hit.LookVector)
+                rs.Stepped:wait()
+                mouse1click()
+                v.Parent = plr.Backpack
+            end
+        end 
+        end
         elseif key == 'b' then
          for i,v in next,plr.Backpack:GetChildren() do
          if v.Name == 'Grenade' or "C4" and v:FindFirstChild'RemoteEvent' then
