@@ -799,12 +799,11 @@ plr:GetMouse().KeyDown:Connect(function(key)
 		end
         elseif key == 'x' then
         for _,v in next,plr.Backpack:GetChildren() do
-             if plr.Character:FindFirstChild'Right Arm' and v.Name == 'Grenade'and v:FindFirstChild'RemoteEvent' then
+             if plr.Character:FindFirstChild'Right Arm' and v.Name == 'Grenade' then
                 v.Parent = plr.Character
-                v.RemoteEvent:FireServer(mouse.Hit.LookVector)
                 v:Activate()
+		wait()
                 mouse2click()
-                wait()
                 v.Parent = plr.Backpack
             end
          end
@@ -812,10 +811,10 @@ plr:GetMouse().KeyDown:Connect(function(key)
          for i,v in next,plr.Backpack:GetChildren() do
          if v.Name == 'C4' or 'Grenade' and v:FindFirstChild'RemoteEvent' then
                 v.Parent = plr.Character
-                for i=1,1 do
-                v.RemoteEvent:FireServer(mouse.Hit.LookVector)
+                for i=1,2 do
+                v:Activate()
                 wait()
-                mouse1click()
+                mouse2click()
                 v.Parent = plr.Backpack
             end
         end 
