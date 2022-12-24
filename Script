@@ -99,24 +99,27 @@ x:Section("Controls")
 x:Search(Color3.fromRGB(255,0,255) --[[nil = Yellow]]) -- Ez searcher for if you have a lot of things
 
 x:Button("Drop GR (X)",function()
+        wait(1)
         for _,v in next,plr.Backpack:GetChildren() do
-             if plr.Character:FindFirstChild'Right Arm' and v.Name == 'Grenade' and v.Name == 'C4' and v:FindFirstChild'RemoteEvent' then
-                v.Parent = plr.Character
-                v.RemoteEvent:FireServer(mouse.Hit.LookVector)
-                v:Activate()
-                wait()
-                v.Parent = plr.Backpack
+            if v.Name == 'C4' then
+                pcall(function()
+                    v.Parent = plr.Character
+                    rs:wait()
+                    v.RemoteEvent:FireServer()
+                end)
             end
-         end
-     end)
+        end
+    end)
 
 x:Button("Drop C4 (B)",function()
+        wait(1)
         for _,v in next,plr.Backpack:GetChildren() do
-            if v.Name == 'C4' and v:FindFirstChild'RemoteEvent' then
-                v.Parent = plr.Character
-                v.RemoteEvent:FireServer(mouse.Hit.LookVector)
-                wait()
-                v.Parent = plr.Backpack
+            if v.Name == 'C4' then
+                pcall(function()
+                    v.Parent = plr.Character
+                    rs:wait()
+                    v.RemoteEvent:FireServer()
+                end)
             end
         end
     end)
@@ -2545,6 +2548,12 @@ x:Toggle("Place Traps",{location = Table, flag = "Toggle"},function(bool)
 	end
 end)
 
+x:Dropdown("Dropdown",{location = Table,flag = "Dropdown",search = true --[[AddsSearchBar]], list = {"1","2","3","4","5","6","7","8","9","0"} --[[Wont work when PlayerList = true]], PlayerList = true --[[ Turns the list into the players in the server ]]},function()
+   print(Table["Dropdown"])
+end)
+x:Bind("KeyBind",{location = Table, flag = "KeyBind", default = Enum.KeyCode.B},function() -- Automatically stops when the gui is removed
+   print(Table["KeyBind"])
+end)
 x:Section("Weapons")
 
 x:Button("Mace",function()
