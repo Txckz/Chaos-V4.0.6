@@ -1,3 +1,5 @@
+local UserInputService = game:GetService("UserInputService")
+local Heartbeat = game:GetService("RunService").Heartbeat
 local dupping = false
 local walkSpeed = 16
 local plrs = game:GetService'Players'
@@ -93,7 +95,7 @@ end
 
 local Lib = loadstring(game:HttpGet("https://pastebin.com/raw/BJE6ZcKr", true))()
 local Table = {}
-local x = Lib:CreateWindow("CH40S v4.1.0")
+local x = Lib:CreateWindow("CHAOS v.4.1.0")
 x:Section("Controls")
 
 x:Search(Color3.fromRGB(255,0,255) --[[nil = Yellow]]) -- Ez searcher for if you have a lot of things
@@ -101,20 +103,7 @@ x:Search(Color3.fromRGB(255,0,255) --[[nil = Yellow]]) -- Ez searcher for if you
 x:Button("Drop GR (X)",function()
         wait(1)
         for _,v in next,plr.Backpack:GetChildren() do
-            if v.Name == 'C4' then
-                pcall(function()
-                    v.Parent = plr.Character
-                    rs:wait()
-                    v.RemoteEvent:FireServer()
-                end)
-            end
-        end
-    end)
-
-x:Button("Drop C4 (B)",function()
-        wait(1)
-        for _,v in next,plr.Backpack:GetChildren() do
-            if v.Name == 'C4' then
+            if v.Name == 'Grenade' then
                 pcall(function()
                     v.Parent = plr.Character
                     rs:wait()
@@ -162,21 +151,10 @@ x:Button("Sniper (C)",function()
         end
     end)
 
-x:Button("Drop C4/GR Normal (B)",function()
+x:Button("Drop C4/GR (B)",function()
 end)
 
-x:Button("Drop GR/C4 Nil (U)",function()
-		for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-			if v.Name == "Grenade" and plr.Character:FindFirstChild'Right Arm' then
-				game.Players.LocalPlayer.Character.Humanoid:EquipTool(v)
-				v:Activate(mouse.Hit.LookVector)
-                rs.Stepped:wait()
-				game:GetService("RunService").Heartbeat:Wait()
-              end
-          end
-end)
-
-x:Button("Drop GR/C4 Lag (P)",function()
+x:Button("STools Only (P)",function()
 end)
 
 plr:GetMouse().KeyDown:Connect(function(key)
@@ -233,51 +211,6 @@ plr:GetMouse().KeyDown:Connect(function(key)
 				end
 			end
 		end
-        elseif key == 'k' then
-		for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-			if v.Name == "Chainsaw" then
-				game.Players.LocalPlayer.Character.Humanoid:EquipTool(v)
-                v:Activate()
-                wait(.1)
-                for i=1,2 do
-					game:GetService("RunService").Heartbeat:Wait()
-				end
-			end
-		end
-        elseif key == 'b' then
-         for i,v in next,plr.Backpack:GetChildren() do
-         if v.Name == 'C4' or 'Grenade' and v:FindFirstChild'RemoteEvent' then
-                v.Parent = plr.Character
-                for i=1,1 do
-                v.RemoteEvent:FireServer(mouse.Hit.LookVector)
-                v:Activate()
-                mouse1click()
-                rs.renderstepped:wait()
-                v.Parent = plr.Backpack
-            end
-        end 
-        end
-        elseif key == "p" then
-		for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-         if v.Name == 'C4' or 'Grenade' and v:FindFirstChild'RemoteEvent' then
-                v.Parent = plr.Character              
-                v.RemoteEvent:FireServer()
-                wait()
-                mouse1click()
-				for i=1,2 do
-					game:GetService("RunService").Heartbeat:Wait()
-				end
-			end
-         end
-        elseif key == "u" then
-		for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-			if v.Name == "Grenade" and plr.Character:FindFirstChild'Right Arm' then
-				game.Players.LocalPlayer.Character.Humanoid:EquipTool(v)
-				v:Activate(mouse.Hit.LookVector)
-                rs.Stepped:wait()
-				game:GetService("RunService").Heartbeat:Wait()
-              end
-        end
     elseif key == 'l' and plr.Character then
         if not dupping then
             Notify('Dupping 3','Wait 5 Sec',0)
@@ -379,62 +312,6 @@ plr:GetMouse().KeyDown:Connect(function(key)
 				end
 			end
 		end
-        elseif key == 'k' then
-		for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-			if v.Name == "Chainsaw" then
-				game.Players.LocalPlayer.Character.Humanoid:EquipTool(v)
-                v:Activate()
-                wait(.1)
-                for i=1,2 do
-					game:GetService("RunService").Heartbeat:Wait()
-				end
-			end
-		end
-        elseif key == 'x' then
-         for i,v in next,plr.Backpack:GetChildren() do
-         if v.Name == 'Grenade' and v:FindFirstChild'RemoteEvent' then
-                v.Parent = plr.Character
-                for i=1,1 do
-                v.RemoteEvent:FireServer(mouse.Hit.LookVector)
-                rs.Stepped:wait()
-                mouse1click()
-                v.Parent = plr.Backpack
-            end
-        end 
-        end
-        elseif key == 'b' then
-         for i,v in next,plr.Backpack:GetChildren() do
-         if v.Name == 'Grenade' or "C4" and v:FindFirstChild'RemoteEvent' then
-                v.Parent = plr.Character
-                for i=1,1 do
-                v.RemoteEvent:FireServer(mouse.Hit.LookVector)
-                rs.Stepped:wait()
-                mouse1click()
-                v.Parent = plr.Backpack
-            end
-        end 
-        end
-        elseif key == "p" then
-		for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-         if v.Name == 'C4' or 'Grenade' and v:FindFirstChild'RemoteEvent' then
-                v.Parent = plr.Character              
-                v.RemoteEvent:FireServer()
-                wait()
-                mouse1click()
-				for i=1,2 do
-					game:GetService("RunService").Heartbeat:Wait()
-				end
-			end
-         end
-        elseif key == "u" then
-		for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-			if v.Name == "Grenade" and plr.Character:FindFirstChild'Right Arm' then
-				game.Players.LocalPlayer.Character.Humanoid:EquipTool(v)
-				v:Activate(mouse.Hit.LookVector)
-                rs.Stepped:wait()
-				game:GetService("RunService").Heartbeat:Wait()
-              end
-          end
     elseif key == 'l' and plr.Character then
         if not dupping then
             Notify('Dupping 2','Wait 5 Sec',0)
@@ -515,17 +392,6 @@ plr:GetMouse().KeyDown:Connect(function(key)
                 v.ReplicateRemote:FireServer(tar.Character.HumanoidRootPart.Position)
             end
         end
-    elseif key == 'v' then
-        for _,v in next,plr.Backpack:GetChildren() do
-            if plr.Character and plr.Character:FindFirstChild'Right Arm' and v.Name == 'Kawaii Revolver' and v:FindFirstChild'ReplicateRemote' and not v:FindFirstChild'ClientCD' and v:FindFirstChild'Barrel' and v.Barrel:FindFirstChild'Attachment' then
-                AddCd(v,2)
-                v.Parent = plr.Character
-                Shoot(v.Barrel.Attachment.WorldPosition,mouse.Hit.p,v)
-                mouse2click()
-                rs.Stepped:wait()
-                v.Parent = plr.Backpack
-            end
-        end
     elseif key == 'c' and plr:FindFirstChild'Backpack' then
         local guns = 0
         for _,v in next,plr.Backpack:GetChildren() do
@@ -547,38 +413,6 @@ plr:GetMouse().KeyDown:Connect(function(key)
 				end
 			end
 		end
-        elseif key == 'k' then
-		for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-			if v.Name == "Chainsaw" then
-				game.Players.LocalPlayer.Character.Humanoid:EquipTool(v)
-                v:Activate()
-                wait(.1)
-                for i=1,2 do
-					game:GetService("RunService").Heartbeat:Wait()
-				end
-			end
-		end
-        elseif key == "p" then
-		for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-         if v.Name == 'C4' or 'Grenade' and v:FindFirstChild'RemoteEvent' then
-                v.Parent = plr.Character              
-                v.RemoteEvent:FireServer()
-                wait()
-                mouse1click()
-				for i=1,2 do
-					game:GetService("RunService").Heartbeat:Wait()
-				end
-			end
-         end
-        elseif key == "u" then
-		for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-			if v.Name == "Grenade" and plr.Character:FindFirstChild'Right Arm' then
-				game.Players.LocalPlayer.Character.Humanoid:EquipTool(v)
-				v:Activate(mouse.Hit.LookVector)
-                rs.Stepped:wait()
-				game:GetService("RunService").Heartbeat:Wait()
-              end
-          end
     elseif key == 'l' and plr.Character then
         if not dupping then
             Notify('Dupping 1','Wait 5 Sec',0)
@@ -685,57 +519,13 @@ plr:GetMouse().KeyDown:Connect(function(key)
          if v.Name == 'C4' or 'Grenade' and v:FindFirstChild'RemoteEvent' then
                 v.Parent = plr.Character
                 for i=1,1 do
-                v.RemoteEvent:FireServer(mouse.Hit.LookVector)
+                v:Activate()
                 mouse2click()
                 v.Parent = plr.Backpack
-            end
-      end
-      end
-        elseif key == 'k' then
-		for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-			if v.Name == "Chainsaw" then
-				game.Players.LocalPlayer.Character.Humanoid:EquipTool(v)
-                v:Activate()
-                wait(.1)
-                for i=1,2 do
-					game:GetService("RunService").Heartbeat:Wait()
 				end
 			end
 		end
-        elseif key == 'b' then
-         for i,v in next,plr.Backpack:GetChildren() do
-         if v.Name == 'C4' or 'Grenade' and v:FindFirstChild'RemoteEvent' then
-                v.Parent = plr.Character
-                for i=1,1 do
-                v.RemoteEvent:FireServer(mouse.Hit.LookVector)
-                rs.RenderStepped:wait()
-                mouse1click()
-                v.Parent = plr.Backpack
-            end
-        end 
         end
-        elseif key == "p" then
-		for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-         if v.Name == 'C4' or 'Grenade' and v:FindFirstChild'RemoteEvent' then
-                v.Parent = plr.Character              
-                v.RemoteEvent:FireServer()
-                wait()
-                mouse1click()
-				for i=1,2 do
-					game:GetService("RunService").Heartbeat:Wait()
-				end
-			end
-         end
-        elseif key == "u" then
-		for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-			if v.Name == "Grenade" and plr.Character:FindFirstChild'Right Arm' then
-				game.Players.LocalPlayer.Character.Humanoid:EquipTool(v)
-				v:Activate(mouse.Hit.LookVector)
-                rs.Stepped:wait()
-				game:GetService("RunService").Heartbeat:Wait()
-              end
-          end
-      end
 end)
 
 plr:GetMouse().KeyDown:Connect(function(key)
@@ -814,419 +604,16 @@ plr:GetMouse().KeyDown:Connect(function(key)
 				end
 			end
 		end
-        elseif key == 'x' then
-        for _,v in next,plr.Backpack:GetChildren() do
-             if plr.Character:FindFirstChild'Right Arm' and v.Name == 'Grenade' then
-                v.Parent = plr.Character
-                v:Activate()
-		wait()
-                mouse2click()
-                v.Parent = plr.Backpack
-            end
-         end
-        elseif key == 'b' then
-         for i,v in next,plr.Backpack:GetChildren() do
-         if v.Name == 'C4' or 'Grenade' and v:FindFirstChild'RemoteEvent' then
-                v.Parent = plr.Character
-                for i=1,2 do
-                v:Activate()
-                wait()
-                mouse2click()
-                v.Parent = plr.Backpack
-            end
-        end 
         end
-        elseif key == "p" then
-		for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-         if v.Name == 'C4' or 'Grenade' and v:FindFirstChild'RemoteEvent' then
-                v.Parent = plr.Character              
-                v.RemoteEvent:FireServer()
-                wait()
-                mouse1click()
-				for i=1,2 do
-					game:GetService("RunService").Heartbeat:Wait()
-				end
-			end
-         end
-        elseif key == "u" then
-		for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-			if v.Name == "Grenade" and plr.Character:FindFirstChild'Right Arm' then
-				game.Players.LocalPlayer.Character.Humanoid:EquipTool(v)
-				v:Activate(mouse.Hit.LookVector)
-                rs.Stepped:wait()
-				game:GetService("RunService").Heartbeat:Wait()
-              end
-          end
-      end
 end)
 
-x:Button("STools (L)",function()
+x:Button("SPTools (L)",function()
 end)
 
 x:Button("KillTool (Z)",function()
 end)
 
-x:Button("Auto Hit (K)",function()
-end)
-
-x:Button("Drop GR/C4 Lag (P)",function()
-end)
-
-x:Button("Drop GR/C4 Combo (U)",function()
-end)
-
 x:Section("Main Features")
-
-x:Button("Frame Revolvers (X2)",function()
-        if not dupping then
-            Notify('Dupping 1','Wait 5 Sec',0)
-            spawn(function()
-                dupping = true
-                local c = 1
-                for i = 1,80 do
-                    pcall(function()
-                        if c>#rep.Weapons:GetChildren() then
-                            c = 1
-                        end
-                    end)
-                    for _,v in next,plr.Character:GetChildren() do
-                        if v.Name == 'Loaded' and v:IsA'IntValue' then
-                            v:Destroy()
-                        end
-                    end
-                    for _,v in next,plr.PlayerGui:GetDescendants() do
-                        if v:IsA'RemoteEvent' and v.Name == 'RemoteEvent' then
-                            pcall(function()
-                                v:FireServer(rep.Weapons:GetChildren()[c].Name)
-                                c=c+1
-                            end)
-                        end
-                    end
-                    wait(0)
-                end
-                Notify('Dupe','Done!',0)
-                dupping = false
-            end)
-        else Notify('Dupping','Already dupping',0)
-        end
-    wait(5)
-	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(57440, 209765, 137768)
-	wait(1)
-	local plr = game:GetService("Players").LocalPlayer; plr.Character.Humanoid:UnequipTools()
-	local Tools = plr.Backpack:GetChildren()
-
-	Tools[1].Grip = CFrame.new(0.7, -0.5, -0.2) * CFrame.Angles(50, math.rad(-180), 3.13)
-	Tools[1].Parent = plr.Character
-
-	Tools[2].Grip = CFrame.new(0.5, -1.2, -0.2) * CFrame.Angles(0, math.rad(-90), 0)
-	Tools[2].Parent = plr.Character
-
-	Tools[3].Grip = CFrame.new(-1.5, -1.2, -0.2) * CFrame.Angles(0, math.rad(-90), 0.03)
-	Tools[3].Parent = plr.Character
-
-	Tools[4].Grip = CFrame.new(-2.5, -1.2, -0.2) * CFrame.Angles(0, math.rad(-90), 0)
-	Tools[4].Parent = plr.Character
-
-	Tools[5].Grip = CFrame.new(-4.6, -0.4, -0.2) * CFrame.Angles(1.6, math.rad(-98), 1.6)
-	Tools[5].Parent = plr.Character
-
-	Tools[6].Grip = CFrame.new(-7, -1.2, -0.2) * CFrame.Angles(0, math.rad(-90), 0)
-	Tools[6].Parent = plr.Character
-
-	Tools[7].Grip = CFrame.new(-9.6, -1.2, -0.2) * CFrame.Angles(0, math.rad(-90), 0)
-	Tools[7].Parent = plr.Character
-
-	Tools[8].Grip = CFrame.new(-12.2, -1.2, -0.2) * CFrame.Angles(0, math.rad(-90), 0)
-	Tools[8].Parent = plr.Character
-
-	Tools[9].Grip = CFrame.new(-1.2, -3.1, -0.2) * CFrame.Angles(1.6, math.rad(-15), 1.6)
-	Tools[9].Parent = plr.Character
-
-	Tools[10].Grip = CFrame.new(-3.3, -2.7, -0.2) * CFrame.Angles(1.6, math.rad(-25), 1.6)
-	Tools[10].Parent = plr.Character
-
-	Tools[11].Grip = CFrame.new(-0.1, 1.8, -0.1) * CFrame.Angles(1.6, math.rad(65), 1.6)
-	Tools[11].Parent = plr.Character
-
-	Tools[12].Grip = CFrame.new(1.3, 2.05, -0.1) * CFrame.Angles(1.6, math.rad(90), 1.6)
-	Tools[12].Parent = plr.Character
-
-	Tools[13].Grip = CFrame.new(3.15, 2.05, -0.1) * CFrame.Angles(1.6, math.rad(90), 1.6)
-	Tools[13].Parent = plr.Character
-
-	Tools[14].Grip = CFrame.new(5.3, 2.05, -0.1) * CFrame.Angles(1.6, math.rad(90), 1.6)
-	Tools[14].Parent = plr.Character
-
-	Tools[15].Grip = CFrame.new(6.5, 4.1, -0.1) * CFrame.Angles(1.6, math.rad(110), 1.6)
-	Tools[15].Parent = plr.Character
-
-	Tools[16].Grip = CFrame.new(-14.3, -1.2, -0.2) * CFrame.Angles(0, math.rad(-90), 0)
-	Tools[16].Parent = plr.Character
-
-	Tools[17].Grip = CFrame.new(3.1, -1.2, -0.2) * CFrame.Angles(0, math.rad(-90), 0)
-	Tools[17].Parent = plr.Character
-
-	Tools[18].Grip = CFrame.new(5.2, -1.2, -0.2) * CFrame.Angles(0, math.rad(-90), 0)
-	Tools[18].Parent = plr.Character
-
-	Tools[19].Grip = CFrame.new(0.25, 6.8, -0.05) * CFrame.Angles(1.6, math.rad(-0), 1.6)
-	Tools[19].Parent = plr.Character
-
-	Tools[20].Grip = CFrame.new(3.8, -4.4, -0.27) * CFrame.Angles(1.6, math.rad(-137), 1.6)
-	Tools[20].Parent = plr.Character
-	wait(.2)
-	local plr = game:GetService("Players").LocalPlayer; plr.Character.Humanoid:UnequipTools()
-	local Tools = plr.Backpack:GetChildren()
-
-	Tools[1].Grip = CFrame.new(0.7, -0.5, -0.2) * CFrame.Angles(50, math.rad(-180), 3.13)
-	Tools[1].Parent = plr.Character
-
-	Tools[2].Grip = CFrame.new(0.5, -1.2, -0.2) * CFrame.Angles(0, math.rad(-90), 0)
-	Tools[2].Parent = plr.Character
-
-	Tools[3].Grip = CFrame.new(-1.5, -1.2, -0.2) * CFrame.Angles(0, math.rad(-90), 0.03)
-	Tools[3].Parent = plr.Character
-
-	Tools[4].Grip = CFrame.new(-2.5, -1.2, -0.2) * CFrame.Angles(0, math.rad(-90), 0)
-	Tools[4].Parent = plr.Character
-
-	Tools[5].Grip = CFrame.new(-4.6, -0.4, -0.2) * CFrame.Angles(1.6, math.rad(-98), 1.6)
-	Tools[5].Parent = plr.Character
-
-	Tools[6].Grip = CFrame.new(-7, -1.2, -0.2) * CFrame.Angles(0, math.rad(-90), 0)
-	Tools[6].Parent = plr.Character
-
-	Tools[7].Grip = CFrame.new(-9.6, -1.2, -0.2) * CFrame.Angles(0, math.rad(-90), 0)
-	Tools[7].Parent = plr.Character
-
-	Tools[8].Grip = CFrame.new(-12.2, -1.2, -0.2) * CFrame.Angles(0, math.rad(-90), 0)
-	Tools[8].Parent = plr.Character
-
-	Tools[9].Grip = CFrame.new(-1.2, -3.1, -0.2) * CFrame.Angles(1.6, math.rad(-15), 1.6)
-	Tools[9].Parent = plr.Character
-
-	Tools[10].Grip = CFrame.new(-3.3, -2.7, -0.2) * CFrame.Angles(1.6, math.rad(-25), 1.6)
-	Tools[10].Parent = plr.Character
-
-	Tools[11].Grip = CFrame.new(-0.1, 1.8, -0.1) * CFrame.Angles(1.6, math.rad(65), 1.6)
-	Tools[11].Parent = plr.Character
-
-	Tools[12].Grip = CFrame.new(1.3, 2.05, -0.1) * CFrame.Angles(1.6, math.rad(90), 1.6)
-	Tools[12].Parent = plr.Character
-
-	Tools[13].Grip = CFrame.new(3.15, 2.05, -0.1) * CFrame.Angles(1.6, math.rad(90), 1.6)
-	Tools[13].Parent = plr.Character
-
-	Tools[14].Grip = CFrame.new(5.3, 2.05, -0.1) * CFrame.Angles(1.6, math.rad(90), 1.6)
-	Tools[14].Parent = plr.Character
-
-	Tools[15].Grip = CFrame.new(6.5, 4.1, -0.1) * CFrame.Angles(1.6, math.rad(110), 1.6)
-	Tools[15].Parent = plr.Character
-
-	Tools[16].Grip = CFrame.new(-14.3, -1.2, -0.2) * CFrame.Angles(0, math.rad(-90), 0)
-	Tools[16].Parent = plr.Character
-
-	Tools[17].Grip = CFrame.new(3.1, -1.2, -0.2) * CFrame.Angles(0, math.rad(-90), 0)
-	Tools[17].Parent = plr.Character
-
-	Tools[18].Grip = CFrame.new(5.2, -1.2, -0.2) * CFrame.Angles(0, math.rad(-90), 0)
-	Tools[18].Parent = plr.Character
-
-	Tools[19].Grip = CFrame.new(0.25, 6.8, -0.05) * CFrame.Angles(1.6, math.rad(-0), 1.6)
-	Tools[19].Parent = plr.Character
-
-	Tools[20].Grip = CFrame.new(3.8, -4.4, -0.27) * CFrame.Angles(1.6, math.rad(-137), 1.6)
-	Tools[20].Parent = plr.Character
-	wait(.3)
-	local plr = game:GetService("Players").LocalPlayer; plr.Character.Humanoid:UnequipTools()
-	local Tools = plr.Backpack:GetChildren()
-
-	Tools[1].Grip = CFrame.new(0.7, -0.5, -0.2) * CFrame.Angles(50, math.rad(-180), 3.13)
-	Tools[1].Parent = plr.Character
-
-	Tools[2].Grip = CFrame.new(0.5, -1.2, -0.2) * CFrame.Angles(0, math.rad(-90), 0)
-	Tools[2].Parent = plr.Character
-
-	Tools[3].Grip = CFrame.new(-1.5, -1.2, -0.2) * CFrame.Angles(0, math.rad(-90), 0.03)
-	Tools[3].Parent = plr.Character
-
-	Tools[4].Grip = CFrame.new(-2.5, -1.2, -0.2) * CFrame.Angles(0, math.rad(-90), 0)
-	Tools[4].Parent = plr.Character
-
-	Tools[5].Grip = CFrame.new(-4.6, -0.4, -0.2) * CFrame.Angles(1.6, math.rad(-98), 1.6)
-	Tools[5].Parent = plr.Character
-
-	Tools[6].Grip = CFrame.new(-7, -1.2, -0.2) * CFrame.Angles(0, math.rad(-90), 0)
-	Tools[6].Parent = plr.Character
-
-	Tools[7].Grip = CFrame.new(-9.6, -1.2, -0.2) * CFrame.Angles(0, math.rad(-90), 0)
-	Tools[7].Parent = plr.Character
-
-	Tools[8].Grip = CFrame.new(-12.2, -1.2, -0.2) * CFrame.Angles(0, math.rad(-90), 0)
-	Tools[8].Parent = plr.Character
-
-	Tools[9].Grip = CFrame.new(-1.2, -3.1, -0.2) * CFrame.Angles(1.6, math.rad(-15), 1.6)
-	Tools[9].Parent = plr.Character
-
-	Tools[10].Grip = CFrame.new(-3.3, -2.7, -0.2) * CFrame.Angles(1.6, math.rad(-25), 1.6)
-	Tools[10].Parent = plr.Character
-
-	Tools[11].Grip = CFrame.new(-0.1, 1.8, -0.1) * CFrame.Angles(1.6, math.rad(65), 1.6)
-	Tools[11].Parent = plr.Character
-
-	Tools[12].Grip = CFrame.new(1.3, 2.05, -0.1) * CFrame.Angles(1.6, math.rad(90), 1.6)
-	Tools[12].Parent = plr.Character
-
-	Tools[13].Grip = CFrame.new(3.15, 2.05, -0.1) * CFrame.Angles(1.6, math.rad(90), 1.6)
-	Tools[13].Parent = plr.Character
-
-	Tools[14].Grip = CFrame.new(5.3, 2.05, -0.1) * CFrame.Angles(1.6, math.rad(90), 1.6)
-	Tools[14].Parent = plr.Character
-
-	Tools[15].Grip = CFrame.new(6.5, 4.1, -0.1) * CFrame.Angles(1.6, math.rad(110), 1.6)
-	Tools[15].Parent = plr.Character
-
-	Tools[16].Grip = CFrame.new(-14.3, -1.2, -0.2) * CFrame.Angles(0, math.rad(-90), 0)
-	Tools[16].Parent = plr.Character
-
-	Tools[17].Grip = CFrame.new(3.1, -1.2, -0.2) * CFrame.Angles(0, math.rad(-90), 0)
-	Tools[17].Parent = plr.Character
-
-	Tools[18].Grip = CFrame.new(5.2, -1.2, -0.2) * CFrame.Angles(0, math.rad(-90), 0)
-	Tools[18].Parent = plr.Character
-
-	Tools[19].Grip = CFrame.new(0.25, 6.8, -0.05) * CFrame.Angles(1.6, math.rad(-0), 1.6)
-	Tools[19].Parent = plr.Character
-
-	Tools[20].Grip = CFrame.new(3.8, -4.4, -0.27) * CFrame.Angles(1.6, math.rad(-137), 1.6)
-	Tools[20].Parent = plr.Character
-	wait(.4)
-	local plr = game:GetService("Players").LocalPlayer; plr.Character.Humanoid:UnequipTools()
-	local Tools = plr.Backpack:GetChildren()
-
-	Tools[1].Grip = CFrame.new(0.7, -0.5, -0.2) * CFrame.Angles(50, math.rad(-180), 3.13)
-	Tools[1].Parent = plr.Character
-
-	Tools[2].Grip = CFrame.new(0.5, -1.2, -0.2) * CFrame.Angles(0, math.rad(-90), 0)
-	Tools[2].Parent = plr.Character
-
-	Tools[3].Grip = CFrame.new(-1.5, -1.2, -0.2) * CFrame.Angles(0, math.rad(-90), 0.03)
-	Tools[3].Parent = plr.Character
-
-	Tools[4].Grip = CFrame.new(-2.5, -1.2, -0.2) * CFrame.Angles(0, math.rad(-90), 0)
-	Tools[4].Parent = plr.Character
-
-	Tools[5].Grip = CFrame.new(-4.6, -0.4, -0.2) * CFrame.Angles(1.6, math.rad(-98), 1.6)
-	Tools[5].Parent = plr.Character
-
-	Tools[6].Grip = CFrame.new(-7, -1.2, -0.2) * CFrame.Angles(0, math.rad(-90), 0)
-	Tools[6].Parent = plr.Character
-
-	Tools[7].Grip = CFrame.new(-9.6, -1.2, -0.2) * CFrame.Angles(0, math.rad(-90), 0)
-	Tools[7].Parent = plr.Character
-
-	Tools[8].Grip = CFrame.new(-12.2, -1.2, -0.2) * CFrame.Angles(0, math.rad(-90), 0)
-	Tools[8].Parent = plr.Character
-
-	Tools[9].Grip = CFrame.new(-1.2, -3.1, -0.2) * CFrame.Angles(1.6, math.rad(-15), 1.6)
-	Tools[9].Parent = plr.Character
-
-	Tools[10].Grip = CFrame.new(-3.3, -2.7, -0.2) * CFrame.Angles(1.6, math.rad(-25), 1.6)
-	Tools[10].Parent = plr.Character
-
-	Tools[11].Grip = CFrame.new(-0.1, 1.8, -0.1) * CFrame.Angles(1.6, math.rad(65), 1.6)
-	Tools[11].Parent = plr.Character
-
-	Tools[12].Grip = CFrame.new(1.3, 2.05, -0.1) * CFrame.Angles(1.6, math.rad(90), 1.6)
-	Tools[12].Parent = plr.Character
-
-	Tools[13].Grip = CFrame.new(3.15, 2.05, -0.1) * CFrame.Angles(1.6, math.rad(90), 1.6)
-	Tools[13].Parent = plr.Character
-
-	Tools[14].Grip = CFrame.new(5.3, 2.05, -0.1) * CFrame.Angles(1.6, math.rad(90), 1.6)
-	Tools[14].Parent = plr.Character
-
-	Tools[15].Grip = CFrame.new(6.5, 4.1, -0.1) * CFrame.Angles(1.6, math.rad(110), 1.6)
-	Tools[15].Parent = plr.Character
-
-	Tools[16].Grip = CFrame.new(-14.3, -1.2, -0.2) * CFrame.Angles(0, math.rad(-90), 0)
-	Tools[16].Parent = plr.Character
-
-	Tools[17].Grip = CFrame.new(3.1, -1.2, -0.2) * CFrame.Angles(0, math.rad(-90), 0)
-	Tools[17].Parent = plr.Character
-
-	Tools[18].Grip = CFrame.new(5.2, -1.2, -0.2) * CFrame.Angles(0, math.rad(-90), 0)
-	Tools[18].Parent = plr.Character
-
-	Tools[19].Grip = CFrame.new(0.25, 6.8, -0.05) * CFrame.Angles(1.6, math.rad(-0), 1.6)
-	Tools[19].Parent = plr.Character
-
-	Tools[20].Grip = CFrame.new(3.8, -4.4, -0.27) * CFrame.Angles(1.6, math.rad(-137), 1.6)
-	Tools[20].Parent = plr.Character
-	wait()
-	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-103, 66, 104)
-        Notify('Revolver BOOST','This Make the revolver spam double speed making the kawaii revolver offset when u use it with keybind (V)',15)
-        Notify('Revolver BOOST','Now u can spam revolver with keybind (V) normally!',15)
-        Notify('Revolver BOOST','Ready!',15)
-end)
- 
-x:Button("Coffee",function()
-local tool = Instance.new("Tool",game.Players.HelloJesus009.Backpack)
-local handle = Instance.new("Part", tool)
-local mesh = Instance.new("SpecialMesh", handle)
-local sound = Instance.new("Sound", handle)
-local smoke
-local coffee
-local cmesh
-local weld
-local cdecal
-local enabled = true
-tool.Name = "Coffee"
-handle.Name = "Handle"
-handle.BrickColor = BrickColor.new("Institutional white")
-mesh.Name = "m"
-mesh.MeshType = "FileMesh"
-mesh.MeshId="http://www.roblox.com/asset/?id=32023686"
-mesh.Scale = Vector3.new(1.325, 1.325, 1.325)
-coffee = handle:Clone()
-coffee.Name = "Brown"
-coffee.Parent = handle
-cdecal = Instance.new("Decal", coffee)
-cdecal.Texture = "rbxassetid://38053293"
-cdecal.Face = "Top"
-weld = Instance.new("Weld",coffee)
-weld.Part0 = handle
-weld.Part1 = coffee
-coffee.CanCollide = false
-coffee.Size = Vector3.new(0.883, 0.353, 1.767)
-coffee.m:Destroy()
-cmesh = Instance.new("CylinderMesh", coffee)
-cmesh.Offset = Vector3.new(-0.15,-0,0)
-cmesh.Scale = Vector3.new(0.7, 1.75, 0.65)
-sound.SoundId = "http://www.roblox.com/asset/?id=10722059"
-sound.PlaybackSpeed = 1.15
-smoke = Instance.new("Smoke", coffee)
-smoke.RiseVelocity = 5
-smoke.Size = 0.25
- 
-function onActivated()
-	if enabled == false then return end
-	enabled = false
-	tool.GripForward = Vector3.new(0,-.759,-.651)
-	tool.GripPos = Vector3.new(1.5,-.5,.3)
-	tool.GripRight = Vector3.new(1,0,0)
-	tool.GripUp = Vector3.new(0,.651,-.759)
-	sound:Play()
-	wait(1.75)
-	enabled = true
-	tool.GripForward = Vector3.new(-.976,0,-0.217)
-	tool.GripPos = Vector3.new(0.03,0,0)
-	tool.GripRight = Vector3.new(.217,0,-.976)
-	tool.GripUp = Vector3.new(0,1,0)
-end
- 
-tool.Activated:connect(onActivated)
-end)
 
 x:Button("Crash",function()
          for i,v in next,plr.Backpack:GetChildren() do
@@ -1281,26 +668,6 @@ end)
 x:Button("Night",function()
 game.Lighting:SetMinutesAfterMidnight(0)
 end)
-
-x:Button("GR (nil)",function()
-        for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-            if v.Name == "Grenade" then
-                game.Players.LocalPlayer.Character.Humanoid:EquipTool(v)
-                Workspace.HelloJesus009.Grenade.RemoteEvent:FireServer()
-            game:GetService("RunService").Heartbeat:Wait()
-            end
-        end
-    end)
-
-x:Button("C4 (nil)",function()
-        for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-            if v.Name == "C4" then
-                game.Players.LocalPlayer.Character.Humanoid:EquipTool(v)
-                Workspace.HelloJesus009.C4.RemoteEvent:FireServer()
-            game:GetService("RunService").Heartbeat:Wait()
-            end
-        end
-    end)
 
 x:Button("Sprint Speed (50)",function()
 spawn(function()
@@ -1408,6 +775,7 @@ Services.RunService.Heartbeat:Connect(function()
        end
    end)
 end)
+Notify('Anti-Fling','Activated',5)
 end)
 
 x:Button("GodMode",function()
@@ -2457,8 +1825,8 @@ con = renderstepped:Connect(function(deltaTime)
         return con:Disconnect()
     end
     local vel = HumanoidRootPart.Velocity
-    sine += deltaTime
-    deltaTime *= 10
+    sine = deltaTime
+    deltaTime = 10
     if vel.Magnitude > 2 then
         if abs(vel.X) + abs(vel.Z) > abs(vel.Y) then -- walk
             
@@ -2548,12 +1916,6 @@ x:Toggle("Place Traps",{location = Table, flag = "Toggle"},function(bool)
 	end
 end)
 
-x:Dropdown("Dropdown",{location = Table,flag = "Dropdown",search = true --[[AddsSearchBar]], list = {"1","2","3","4","5","6","7","8","9","0"} --[[Wont work when PlayerList = true]], PlayerList = true --[[ Turns the list into the players in the server ]]},function()
-   print(Table["Dropdown"])
-end)
-x:Bind("KeyBind",{location = Table, flag = "KeyBind", default = Enum.KeyCode.B},function() -- Automatically stops when the gui is removed
-   print(Table["KeyBind"])
-end)
 x:Section("Weapons")
 
 x:Button("Mace",function()
@@ -2675,22 +2037,6 @@ x:Toggle("Target All",{location = Table, flag = "Toggle"},function(bool)
             end
             wait()
         until not FastKilling
-    end
-end)
-
-local Spamming = false
-x:Toggle("Dupe Sword",{location = Table, flag = "Toggle"},function(bool)
-    if Spamming then
-        Spamming = false
-    else
-        Spamming = true
-        repeat
-            if GetChar():FindFirstChild("Loaded") then
-                GetChar().Loaded:Destroy()
-            end
-            Player.PlayerGui["Menu Screen"].RemoteEvent:FireServer("Emerald Greatsword")
-            game:GetService("RunService").Heartbeat:Wait()
-        until not Spamming
     end
 end)
 
@@ -2957,438 +2303,7 @@ end)
 x:Button("Crash Fixed+",function()
 end)
 
-x:Section("Visualizer")
-
-x:Button("Instructions Click Here!",function()
-Notify('IMPORTAN!','Dupe Two times Before Active GodMode V2!',15)
-Notify('Instructions','Active GodMode V2 First or tools keep dropping!',15)
-end)
-
-x:Button("AK-47",function()
-	local plr = game:GetService("Players").LocalPlayer; plr.Character.Humanoid:UnequipTools()
-	local Tools = plr.Backpack:GetChildren()
-
-	Tools[1].Grip = CFrame.new(0.7, -0.5, -0.2) * CFrame.Angles(50, math.rad(-180), 3.13)
-	Tools[1].Parent = plr.Character
-
-	Tools[2].Grip = CFrame.new(0.5, -1.2, -0.2) * CFrame.Angles(0, math.rad(-90), 0)
-	Tools[2].Parent = plr.Character
-
-	Tools[3].Grip = CFrame.new(-1.5, -1.2, -0.2) * CFrame.Angles(0, math.rad(-90), 0.03)
-	Tools[3].Parent = plr.Character
-
-	Tools[4].Grip = CFrame.new(-2.5, -1.2, -0.2) * CFrame.Angles(0, math.rad(-90), 0)
-	Tools[4].Parent = plr.Character
-
-	Tools[5].Grip = CFrame.new(-4.6, -0.4, -0.2) * CFrame.Angles(1.6, math.rad(-98), 1.6)
-	Tools[5].Parent = plr.Character
-
-	Tools[6].Grip = CFrame.new(-7, -1.2, -0.2) * CFrame.Angles(0, math.rad(-90), 0)
-	Tools[6].Parent = plr.Character
-
-	Tools[7].Grip = CFrame.new(-9.6, -1.2, -0.2) * CFrame.Angles(0, math.rad(-90), 0)
-	Tools[7].Parent = plr.Character
-
-	Tools[8].Grip = CFrame.new(-12.2, -1.2, -0.2) * CFrame.Angles(0, math.rad(-90), 0)
-	Tools[8].Parent = plr.Character
-
-	Tools[9].Grip = CFrame.new(-1.2, -3.1, -0.2) * CFrame.Angles(1.6, math.rad(-15), 1.6)
-	Tools[9].Parent = plr.Character
-
-	Tools[10].Grip = CFrame.new(-3.3, -2.7, -0.2) * CFrame.Angles(1.6, math.rad(-25), 1.6)
-	Tools[10].Parent = plr.Character
-
-	Tools[11].Grip = CFrame.new(-0.1, 1.8, -0.1) * CFrame.Angles(1.6, math.rad(65), 1.6)
-	Tools[11].Parent = plr.Character
-
-	Tools[12].Grip = CFrame.new(1.3, 2.05, -0.1) * CFrame.Angles(1.6, math.rad(90), 1.6)
-	Tools[12].Parent = plr.Character
-
-	Tools[13].Grip = CFrame.new(3.15, 2.05, -0.1) * CFrame.Angles(1.6, math.rad(90), 1.6)
-	Tools[13].Parent = plr.Character
-
-	Tools[14].Grip = CFrame.new(5.3, 2.05, -0.1) * CFrame.Angles(1.6, math.rad(90), 1.6)
-	Tools[14].Parent = plr.Character
-
-	Tools[15].Grip = CFrame.new(6.5, 4.1, -0.1) * CFrame.Angles(1.6, math.rad(110), 1.6)
-	Tools[15].Parent = plr.Character
-
-	Tools[16].Grip = CFrame.new(-14.3, -1.2, -0.2) * CFrame.Angles(0, math.rad(-90), 0)
-	Tools[16].Parent = plr.Character
-
-	Tools[17].Grip = CFrame.new(3.1, -1.2, -0.2) * CFrame.Angles(0, math.rad(-90), 0)
-	Tools[17].Parent = plr.Character
-
-	Tools[18].Grip = CFrame.new(5.2, -1.2, -0.2) * CFrame.Angles(0, math.rad(-90), 0)
-	Tools[18].Parent = plr.Character
-
-	Tools[19].Grip = CFrame.new(0.25, 6.8, -0.05) * CFrame.Angles(1.6, math.rad(-0), 1.6)
-	Tools[19].Parent = plr.Character
-
-	Tools[20].Grip = CFrame.new(3.8, -4.4, -0.27) * CFrame.Angles(1.6, math.rad(-137), 1.6)
-	Tools[20].Parent = plr.Character
-end)
-
-x:Button("RPG",function()
-	local plr = game:GetService("Players").LocalPlayer; plr.Character.Humanoid:UnequipTools()
-	local Tools = plr.Backpack:GetChildren()
-
-	Tools[1].Grip = CFrame.new(0.7, -0.5, -0.2) * CFrame.Angles(50, math.rad(-180), 3.13)
-	Tools[1].Parent = plr.Character
-
-	Tools[2].Grip = CFrame.new(0.7, -1.2, -0.2) * CFrame.Angles(1.6, math.rad(-98),1.6)
-	Tools[2].Parent = plr.Character
-
-	Tools[3].Grip = CFrame.new(2.5, -1.2, -0.2) * CFrame.Angles(1.6, math.rad(-98),1.6)
-	Tools[3].Parent = plr.Character
-
-	Tools[4].Grip = CFrame.new(4.3, -1.2, -0.2) * CFrame.Angles(1.6, math.rad(-98),1.6)
-	Tools[4].Parent = plr.Character
-
-	Tools[5].Grip = CFrame.new(-6.5, -1.6, -0.2) * CFrame.Angles(1.6, math.rad(-250),1.6)
-	Tools[5].Parent = plr.Character
-
-	Tools[6].Grip = CFrame.new(6, -2.55, -0.2) * CFrame.Angles(1.6, math.rad(-115),1.6)
-	Tools[6].Parent = plr.Character
-
-	Tools[7].Grip = CFrame.new(1.55, 7.2, 0.1) * CFrame.Angles(1.6, math.rad(-10),1.6)
-	Tools[7].Parent = plr.Character
-
-	Tools[8].Grip = CFrame.new(-1.1, -1.2, -0.23) * CFrame.Angles(1.6, math.rad(-98),1.57)
-	Tools[8].Parent = plr.Character
-
-	Tools[9].Grip = CFrame.new(-2.8, -1.17, -0.17) * CFrame.Angles(1.6, math.rad(-99),1.6)
-	Tools[9].Parent = plr.Character
-
-	Tools[10].Grip = CFrame.new(0, 2.7, -0.2) * CFrame.Angles(1.575, math.rad(-175),1.575)
-	Tools[10].Parent = plr.Character
-
-	Tools[11].Grip = CFrame.new(-4.6, -1.1, -0.17) * CFrame.Angles(1.6, math.rad(-100),1.6)
-	Tools[11].Parent = plr.Character
-
-	Tools[12].Grip = CFrame.new(-6.3, -1.1, -0.17) * CFrame.Angles(1.6, math.rad(-100),1.6)
-	Tools[12].Parent = plr.Character
-
-	Tools[13].Grip = CFrame.new(-1, 6, -0.45) * CFrame.Angles(1.6, math.rad(-205),1.4)
-	Tools[13].Parent = plr.Character
-end)
-
-x:Button("Sword",function()
-	local plr = game:GetService("Players").LocalPlayer; plr.Character.Humanoid:UnequipTools()
-	local Tools = plr.Backpack:GetChildren()
-
-	Tools[1].Grip = CFrame.new(0, -0.3, 0) * CFrame.Angles(1.58, math.rad(-360), 1.58)
-	Tools[1].Parent = plr.Character
-
-	Tools[2].Grip = CFrame.new(0.15, 1.7, -0.02) * CFrame.Angles(1.58, math.rad(90), 1.58)
-	Tools[2].Parent = plr.Character
-
-	Tools[3].Grip = CFrame.new(3, -0.9, -0.05) * CFrame.Angles(1.58, math.rad(-45), 1.58)
-	Tools[3].Parent = plr.Character
-
-	Tools[4].Grip = CFrame.new(-3.1, -0.67, -0.049) * CFrame.Angles(1.58, math.rad(-135), 1.58)
-	Tools[4].Parent = plr.Character
-
-	Tools[5].Grip = CFrame.new(2.2, -0.3, -0.03) * CFrame.Angles(1.58, math.rad(-360), 1.58)
-	Tools[5].Parent = plr.Character
-
-	Tools[6].Grip = CFrame.new(4.2, -0.3, 0) * CFrame.Angles(1.58, math.rad(-360), 1.58)
-	Tools[6].Parent = plr.Character
-
-	Tools[7].Grip = CFrame.new(6.2, -0.3, 0) * CFrame.Angles(1.58, math.rad(-360), 1.58)
-	Tools[7].Parent = plr.Character
-
-	Tools[8].Grip = CFrame.new(8.2, -0.3, 0) * CFrame.Angles(1.58, math.rad(-360), 1.58)
-	Tools[8].Parent = plr.Character
-
-	Tools[9].Grip = CFrame.new(10.2, -0.3, 0) * CFrame.Angles(1.58, math.rad(-360), 1.58)
-	Tools[9].Parent = plr.Character
-
-	Tools[10].Grip = CFrame.new(12.2, -0.3, 0) * CFrame.Angles(1.58, math.rad(-360), 1.58)
-	Tools[10].Parent = plr.Character
-end)
-
-x:Button("Pickaxe",function()
-	local plr = game:GetService("Players").LocalPlayer; plr.Character.Humanoid:UnequipTools()
-	local Tools = plr.Backpack:GetChildren()
-
-	Tools[1].Grip = CFrame.new(-0.4, 0.6, 0) * CFrame.Angles(1.6, math.rad(-180), 1.58)
-	Tools[1].Parent = plr.Character
-
-	Tools[2].Grip = CFrame.new(-2.7, 0.6, 0) * CFrame.Angles(1.6, math.rad(-180), 1.58)
-	Tools[2].Parent = plr.Character
-
-	Tools[3].Grip = CFrame.new(-4.5, 0.6, 0) * CFrame.Angles(1.6, math.rad(-180), 1.58)
-	Tools[3].Parent = plr.Character
-
-	Tools[4].Grip = CFrame.new(-6.3, 0.6, 0) * CFrame.Angles(1.6, math.rad(-180), 1.58)
-	Tools[4].Parent = plr.Character
-
-	Tools[5].Grip = CFrame.new(-0.3, 6.85, -0.4) * CFrame.Angles(38.5, math.rad(-270), 2.3)
-	Tools[5].Parent = plr.Character
-
-	Tools[6].Grip = CFrame.new(1.8, 6.85, -0.4) * CFrame.Angles(38.5, math.rad(-270), 2.3)
-	Tools[6].Parent = plr.Character
-
-	Tools[7].Grip = CFrame.new(3.3, 5.4, 0.32) * CFrame.Angles(1.6, math.rad(-320), 1.6)
-	Tools[7].Parent = plr.Character
-
-	Tools[8].Grip = CFrame.new(-2.42, 6.6, 0.32) * CFrame.Angles(1.6, math.rad(-220), 1.6)
-	Tools[8].Parent = plr.Character
-
-end)
-
-x:Button("Railgun",function()
-	local plr = game:GetService("Players").LocalPlayer; plr.Character.Humanoid:UnequipTools()
-	local Tools = plr.Backpack:GetChildren()
-
-	Tools[1].Grip = CFrame.new(1.1, -1.2, 0) * CFrame.Angles(-1.58, math.rad(-108), -1.58)
-	Tools[1].Parent = plr.Character
-
-	Tools[2].Grip = CFrame.new(2.7, -1.2, 0.02) * CFrame.Angles(-1.58, math.rad(-108), -1.58)
-	Tools[2].Parent = plr.Character
-
-	Tools[3].Grip = CFrame.new(4.5, -2.34, 0) * CFrame.Angles(-1.58, math.rad(-90), -1.58)
-	Tools[3].Parent = plr.Character
-
-	Tools[4].Grip = CFrame.new(4, 5.1, -0.07) * CFrame.Angles(-1.58, math.rad(-180), -1.58)
-	Tools[4].Parent = plr.Character
-
-	Tools[5].Grip = CFrame.new(-5.6, 0.9, -0.07) * CFrame.Angles(-1.58, math.rad(-305), -1.58)
-	Tools[5].Parent = plr.Character
-
-	Tools[6].Grip = CFrame.new(-1.29, 3.5, -0.07) * CFrame.Angles(-1.58, math.rad(-262), -1.58)
-	Tools[6].Parent = plr.Character
-
-	Tools[7].Grip = CFrame.new(4, 1, -0.07) * CFrame.Angles(-1.58, math.rad(-193), -1.58)
-	Tools[7].Parent = plr.Character
-
-	Tools[8].Grip = CFrame.new(-2.8, -0.8, 0) * CFrame.Angles(-1.58, math.rad(-25), -1.58)
-	Tools[8].Parent = plr.Character
-
-	Tools[9].Grip = CFrame.new(0.8, 4.8, -0.07) * CFrame.Angles(-1.58, math.rad(-270), -1.58)
-	Tools[9].Parent = plr.Character
-
-	Tools[10].Grip = CFrame.new(-2.3, -3.8, 0) * CFrame.Angles(-1.58, math.rad(-90), -1.58)
-	Tools[10].Parent = plr.Character
-
-	Tools[11].Grip = CFrame.new(-3, -3.8, 0) * CFrame.Angles(-1.58, math.rad(-90), -1.58)
-	Tools[11].Parent = plr.Character
-
-	Tools[12].Grip = CFrame.new(3, 4.8, -0.075) * CFrame.Angles(-1.58, math.rad(-270), -1.58)
-	Tools[12].Parent = plr.Character
-end)
-
-x:Button("Railgun V2",function()
-	local plr = game:GetService("Players").LocalPlayer; plr.Character.Humanoid:UnequipTools()
-	local Tools = plr.Backpack:GetChildren()
-
-	Tools[1].Grip = CFrame.new(1.1, -1.2, 0) * CFrame.Angles(-1.58, math.rad(-108), -1.58)
-	Tools[1].Parent = plr.Character
-
-	Tools[2].Grip = CFrame.new(2.7, -1.2, 0.02) * CFrame.Angles(-1.58, math.rad(-108), -1.58)
-	Tools[2].Parent = plr.Character
-
-	Tools[3].Grip = CFrame.new(4.5, -2.34, 0) * CFrame.Angles(-1.58, math.rad(-90), -1.58)
-	Tools[3].Parent = plr.Character
-
-	Tools[4].Grip = CFrame.new(4, 5.1, -0.07) * CFrame.Angles(-1.58, math.rad(-180), -1.58)
-	Tools[4].Parent = plr.Character
-
-	Tools[5].Grip = CFrame.new(-5.6, 0.9, -0.07) * CFrame.Angles(-1.58, math.rad(-305), -1.58)
-	Tools[5].Parent = plr.Character
-
-	Tools[6].Grip = CFrame.new(-1.29, 3.5, -0.07) * CFrame.Angles(-1.58, math.rad(-262), -1.58)
-	Tools[6].Parent = plr.Character
-
-	Tools[7].Grip = CFrame.new(4, 1, -0.07) * CFrame.Angles(-1.58, math.rad(-193), -1.58)
-	Tools[7].Parent = plr.Character
-
-	Tools[8].Grip = CFrame.new(-2.8, -0.8, 0) * CFrame.Angles(-1.58, math.rad(-25), -1.58)
-	Tools[8].Parent = plr.Character
-
-	Tools[9].Grip = CFrame.new(0.8, 4.8, -0.07) * CFrame.Angles(-1.58, math.rad(-270), -1.58)
-	Tools[9].Parent = plr.Character
-
-	Tools[10].Grip = CFrame.new(0.6, -2.8, 0) * CFrame.Angles(-1.58, math.rad(-80), -1.58)
-	Tools[10].Parent = plr.Character
-
-	Tools[11].Grip = CFrame.new(-7.3, -2.3, 0) * CFrame.Angles(-1.58, math.rad(-45), -1.58)
-	Tools[11].Parent = plr.Character
-
-	Tools[12].Grip = CFrame.new(1.2, 3.95, -0.062) * CFrame.Angles(-1.58, math.rad(45), -1.58)
-	Tools[12].Parent = plr.Character
-
-	Tools[13].Grip = CFrame.new(4.3, 5.3, -0.075) * CFrame.Angles(-1.58, math.rad(-270), -1.58)
-	Tools[13].Parent = plr.Character
-
-	Tools[14].Grip = CFrame.new(-4.3, -3.5, 0) * CFrame.Angles(-1.58, math.rad(-90), -1.58)
-	Tools[14].Parent = plr.Character
-
-	Tools[15].Grip = CFrame.new(6.6, 5.3, -0.075) * CFrame.Angles(-1.58, math.rad(-270), -1.58)
-	Tools[15].Parent = plr.Character
-
-	Tools[16].Grip = CFrame.new(-6.6, -3.5, 0) * CFrame.Angles(-1.58, math.rad(-90), -1.58)
-	Tools[16].Parent = plr.Character
-
-	Tools[17].Grip = CFrame.new(8.8, 5.3, -0.075) * CFrame.Angles(-1.58, math.rad(-270), -1.58)
-	Tools[17].Parent = plr.Character
-
-	Tools[18].Grip = CFrame.new(-8.8, -3.5, 0) * CFrame.Angles(-1.58, math.rad(-90), -1.58)
-	Tools[18].Parent = plr.Character
-
-	Tools[19].Grip = CFrame.new(11, 5.3, -0.075) * CFrame.Angles(-1.58, math.rad(-270), -1.58)
-	Tools[19].Parent = plr.Character
-
-	Tools[20].Grip = CFrame.new(-11, -3.5, 0) * CFrame.Angles(-1.58, math.rad(-90), -1.58)
-	Tools[20].Parent = plr.Character
-
-	Tools[21].Grip = CFrame.new(3.7, 4.2, -0.075) * CFrame.Angles(-1.58, math.rad(-250), -1.58)
-	Tools[21].Parent = plr.Character
-
-	Tools[22].Grip = CFrame.new(-0.8, -4.1, 0) * CFrame.Angles(-1.58, math.rad(250), -1.58)
-	Tools[22].Parent = plr.Character
-
-	Tools[23].Grip = CFrame.new(-0.7, -0.2, -0.2) * CFrame.Angles(1.57, math.rad(-270), 0)
-	Tools[23].Parent = plr.Character
-end)
-
-x:Button("PC",function()
-	local plr = game:GetService("Players").LocalPlayer; plr.Character.Humanoid:UnequipTools()
-	local Tools = plr.Backpack:GetChildren()
-
-	Tools[1].Grip = CFrame.new(0.8, 1.5, 0) * CFrame.Angles(1.575, math.rad(-180), 3.1)
-	Tools[1].Parent = plr.Character
-
-	Tools[2].Grip = CFrame.new(-0.8, -0.6, 0) * CFrame.Angles(1.575, math.rad(0), 3.1)
-	Tools[2].Parent = plr.Character
-
-	Tools[3].Grip = CFrame.new(3, 1.5, 0) * CFrame.Angles(1.575, math.rad(-180), 3.1)
-	Tools[3].Parent = plr.Character
-
-	Tools[4].Grip = CFrame.new(-3, -0.6, 0) * CFrame.Angles(1.575, math.rad(0), 3.1)
-	Tools[4].Parent = plr.Character
-
-	Tools[5].Grip = CFrame.new(5.2, 1.5, 0) * CFrame.Angles(1.575, math.rad(-180), 3.1)
-	Tools[5].Parent = plr.Character
-
-	Tools[6].Grip = CFrame.new(-5.2, -0.6, 0) * CFrame.Angles(1.575, math.rad(0), 3.1)
-	Tools[6].Parent = plr.Character
-
-	Tools[7].Grip = CFrame.new(1.1, 2.5, -2.95) * CFrame.Angles(1.575, math.rad(180), 4.68)
-	Tools[7].Parent = plr.Character
-
-	Tools[8].Grip = CFrame.new(-2.2, -3, -2.17) * CFrame.Angles(3.13, math.rad(0), 3.1)
-	Tools[8].Parent = plr.Character
-
-	Tools[9].Grip = CFrame.new(-4, -3, -2.1699) * CFrame.Angles(3.13, math.rad(0), 3.1)
-	Tools[9].Parent = plr.Character
-
-	Tools[10].Grip = CFrame.new(2.2, 3.9, -2.26) * CFrame.Angles(3.13, math.rad(0), -0.04)
-	Tools[10].Parent = plr.Character
-
-	Tools[11].Grip = CFrame.new(4, 3.9, -2.26) * CFrame.Angles(3.13, math.rad(0), -0.04)
-	Tools[11].Parent = plr.Character
-end)
-
-x:Button("Arm",function()
-	local plr = game:GetService("Players").LocalPlayer; plr.Character.Humanoid:UnequipTools()
-	local Tools = plr.Backpack:GetChildren()
-
-	Tools[1].Grip = CFrame.new(0.6, -0.1, -0.4) * CFrame.Angles(1.58, math.rad(-90), 0)
-	Tools[1].Parent = plr.Character
-
-	Tools[2].Grip = CFrame.new(0.6, -0.1, -0.3625) * CFrame.Angles(1.58, math.rad(-90), 1.58)
-	Tools[2].Parent = plr.Character
-
-	Tools[3].Grip = CFrame.new(0.6, -0.1, -0.359) * CFrame.Angles(0, math.rad(-90), 1.58)
-	Tools[3].Parent = plr.Character
-
-	Tools[4].Grip = CFrame.new(0.6, -0.1, -0.4) * CFrame.Angles(0, math.rad(-90), -3.15)
-	Tools[4].Parent = plr.Character
-end)
-
-x:Button("Phone",function()
-	local plr = game:GetService("Players").LocalPlayer; plr.Character.Humanoid:UnequipTools()
-	local Tools = plr.Backpack:GetChildren()
-
-	Tools[1].Grip = CFrame.new(-1, 0.5, 0) * CFrame.Angles(0.2, math.rad(-180), 58.1)
-	Tools[1].Parent = plr.Character
-
-	Tools[2].Grip = CFrame.new(2.5, -0, 0) * CFrame.Angles(-0.2, math.rad(-180), -58.13)
-	Tools[2].Parent = plr.Character
-
-	Tools[3].Grip = CFrame.new(-2.5, 0.5, 0) * CFrame.Angles(0.2, math.rad(-180), 58.1)
-	Tools[3].Parent = plr.Character
-
-	Tools[4].Grip = CFrame.new(1, -0, 0) * CFrame.Angles(-0.2, math.rad(-180), -58.13)
-	Tools[4].Parent = plr.Character
-
-	Tools[5].Grip = CFrame.new(-4, 0.5, 0) * CFrame.Angles(0.2, math.rad(-180), 58.1)
-	Tools[5].Parent = plr.Character
-
-	Tools[6].Grip = CFrame.new(4, -0, 0) * CFrame.Angles(-0.2, math.rad(-180), -58.13)
-	Tools[6].Parent = plr.Character
-end)
-
-x:Button("Small TopHat",function()
-	local plr = game:GetService("Players").LocalPlayer; plr.Character.Humanoid:UnequipTools()
-	local Tools = plr.Backpack:GetChildren()
-
-	Tools[1].Grip = CFrame.new(-1.5, -1.65, -1.6) * CFrame.Angles(1.58, math.rad(-180), 0)
-	Tools[1].Parent = plr.Character
-
-	Tools[2].Grip = CFrame.new(3.65, -1.65, -1.7) * CFrame.Angles(1.58, math.rad(180), -1.58)
-	Tools[2].Parent = plr.Character
-
-	Tools[3].Grip = CFrame.new(-3.625, -1.65, 1.25) * CFrame.Angles(1.58, math.rad(-180), 1.58)
-	Tools[3].Parent = plr.Character
-end)
-
-x:Button("Top Hat V1",function()
-	local plr = game:GetService("Players").LocalPlayer; plr.Character.Humanoid:UnequipTools()
-	local Tools = plr.Backpack:GetChildren()
-
-	Tools[1].Grip = CFrame.new(-1.5, -1.65, -1.9) * CFrame.Angles(1.58, math.rad(-180), 0)
-	Tools[1].Parent = plr.Character
-
-	Tools[2].Grip = CFrame.new(3.65, -1.65, -1.7) * CFrame.Angles(1.58, math.rad(180), -1.58)
-	Tools[2].Parent = plr.Character
-
-	Tools[3].Grip = CFrame.new(-3.625, -1.65, 1.25) * CFrame.Angles(1.58, math.rad(-180), 1.58)
-	Tools[3].Parent = plr.Character
-
-	Tools[4].Grip = CFrame.new(6.3, -1.65, -1.7) * CFrame.Angles(1.58, math.rad(180), -1.58)
-	Tools[4].Parent = plr.Character
-
-	Tools[5].Grip = CFrame.new(-6.3, -1.65, 1.25) * CFrame.Angles(1.58, math.rad(-180), 1.58)
-	Tools[5].Parent = plr.Character
-end)
-
-x:Button("Top Hat v2",function()
-	local plr = game:GetService("Players").LocalPlayer; plr.Character.Humanoid:UnequipTools()
-	local Tools = plr.Backpack:GetChildren()
-
-	Tools[1].Grip = CFrame.new(-1.5, -1.65, -1.9) * CFrame.Angles(1.58, math.rad(-180), 0)
-	Tools[1].Parent = plr.Character
-
-	Tools[2].Grip = CFrame.new(3.65, -1.65, -1.7) * CFrame.Angles(1.58, math.rad(180), -1.58)
-	Tools[2].Parent = plr.Character
-
-	Tools[3].Grip = CFrame.new(-3.625, -1.65, 1.25) * CFrame.Angles(1.58, math.rad(-180), 1.58)
-	Tools[3].Parent = plr.Character
-
-	Tools[4].Grip = CFrame.new(6.3, -1.65, -1.7) * CFrame.Angles(1.58, math.rad(180), -1.58)
-	Tools[4].Parent = plr.Character
-
-	Tools[5].Grip = CFrame.new(-6.3, -1.65, 1.25) * CFrame.Angles(1.58, math.rad(-180), 1.58)
-	Tools[5].Parent = plr.Character
-
-	Tools[6].Grip = CFrame.new(9, -1.65, -1.7) * CFrame.Angles(1.58, math.rad(180), -1.58)
-	Tools[6].Parent = plr.Character
-
-	Tools[7].Grip = CFrame.new(-9, -1.65, 1.25) * CFrame.Angles(1.58, math.rad(-180), 1.58)
-	Tools[7].Parent = plr.Character
+x:Button("New Keep Press Funct+",function()
 end)
 
 x:Section("Credits")
@@ -3402,7 +2317,7 @@ Notify('Credits!','Discord : Teck#0498',15)
 end)
 
 x:Button("God/Sniper by KAKOYTO",function()
-Notify('Credits!','*Sniper C* And *GodMode* by KAKOYTO!',15)
+Notify('Credits!','*Sniper C* And *GodMode* by KAKOYTO_LOXX!',15)
 end)
 
 x:Button("HideBind (F6)",function()
@@ -3454,3 +2369,93 @@ game.StarterGui:SetCore("SendNotification", {
     Duration = "DURATION IN SECONDS";
     callbakc = bindableFunction;
 })
+
+--Tirar los dos con la B
+local KeyName = "B"
+UserInputService.InputBegan:Connect(function(input, processed)
+	if input.KeyCode.Name == KeyName then
+		while true do
+			if UserInputService:IsKeyDown(Enum.KeyCode[KeyName]) then
+         for i,v in next,plr.Backpack:GetChildren() do
+         if v.Name == 'Grenade' or 'C4' and v:FindFirstChild'RemoteEvent' then
+                v.Parent = plr.Character
+                for i=1,1 do
+                v.RemoteEvent:FireServer(mouse.Hit.LookVector)
+                rs.Stepped:wait()
+                mouse1click()
+                v.Parent = plr.Backpack
+            end
+        end 
+    end
+			else
+				break
+			end
+			Heartbeat:Wait()
+		end
+	end
+end)
+
+local KeyName = "X"
+UserInputService.InputBegan:Connect(function(input, processed)
+	if input.KeyCode.Name == KeyName then
+		while true do
+			if UserInputService:IsKeyDown(Enum.KeyCode[KeyName]) then
+         for i,v in next,plr.Backpack:GetChildren() do
+         if v.Name == 'Grenade' and v:FindFirstChild'RemoteEvent' then
+                v.Parent = plr.Character
+                for i=1,1 do
+                v.RemoteEvent:FireServer(mouse.Hit.LookVector)
+                rs.Stepped:wait()
+                mouse1click()
+                v.Parent = plr.Backpack
+            end
+        end 
+    end
+			else
+				break
+			end
+			Heartbeat:Wait()
+		end
+	end
+end)
+
+local KeyName = "V"
+UserInputService.InputBegan:Connect(function(input, processed)
+	if input.KeyCode.Name == KeyName then
+		while true do
+			if UserInputService:IsKeyDown(Enum.KeyCode[KeyName]) then
+        for _,v in next,plr.Backpack:GetChildren() do
+            if plr.Character and plr.Character:FindFirstChild'Head' and v.Name == 'Kawaii Revolver' and v:FindFirstChild'ReplicateRemote' and not v:FindFirstChild'ClientCD' and v:FindFirstChild'Barrel' and v.Barrel:FindFirstChild'Attachment' then
+                AddCd(v,2)
+                v.Parent = plr.Character
+                Shoot(v.Barrel.Attachment.WorldPosition,mouse.Hit.p,v)
+                mouse2click()
+                rs.Stepped:wait()
+                v.Parent = plr.Backpack
+            end
+        end
+			else
+				break
+			end
+			Heartbeat:Wait()
+		end
+	end
+end)
+
+local KeyName = "P"
+UserInputService.InputBegan:Connect(function(input, processed)
+	if input.KeyCode.Name == KeyName then
+		while true do
+			if UserInputService:IsKeyDown(Enum.KeyCode[KeyName]) then
+            if GetChar():FindFirstChild("Loaded") then
+                GetChar().Loaded:Destroy()
+            end
+            Player.PlayerGui["Menu Screen"].RemoteEvent:FireServer("C4")
+            game:GetService("RunService").Heartbeat:Wait()
+			else
+				break
+			end
+			Heartbeat:Wait()
+		end
+	end
+end)
