@@ -312,6 +312,18 @@ plr:GetMouse().KeyDown:Connect(function(key)
 				end
 			end
 		end
+    elseif key == 'b' and plr.Character then
+         for i,v in next,plr.Backpack:GetChildren() do
+         if v.Name == 'Grenade' or 'C4' and v:FindFirstChild'RemoteEvent' then
+                v.Parent = plr.Character
+                for i=1,1 do
+                v.RemoteEvent:FireServer(mouse.Hit.LookVector)
+                rs.Stepped:wait()
+                mouse1click()
+                v.Parent = plr.Backpack
+            end
+        end 
+    end
     elseif key == 'l' and plr.Character then
         if not dupping then
             Notify('Dupping 2','Wait 5 Sec',0)
@@ -582,6 +594,17 @@ plr:GetMouse().KeyDown:Connect(function(key)
 				end
 			end
 		end
+        elseif key == 'v' then
+        for _,v in next,plr.Backpack:GetChildren() do
+            if plr.Character and plr.Character:FindFirstChild'Head' and v.Name == 'Kawaii Revolver' and v:FindFirstChild'ReplicateRemote' and not v:FindFirstChild'ClientCD' and v:FindFirstChild'Barrel' and v.Barrel:FindFirstChild'Attachment' then
+                AddCd(v,2)
+                v.Parent = plr.Character
+                Shoot(v.Barrel.Attachment.WorldPosition,mouse.Hit.p,v)
+                mouse2click()
+                rs.Stepped:wait()
+                v.Parent = plr.Backpack
+            end
+        end
         elseif key == 'n' then
 		for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
 			if v.Name == "Spiked Trap" then
@@ -593,6 +616,18 @@ plr:GetMouse().KeyDown:Connect(function(key)
 				   end
 			   end
 		   end
+        elseif key == 'x' then
+         for i,v in next,plr.Backpack:GetChildren() do
+         if v.Name == 'Grenade' and v:FindFirstChild'RemoteEvent' then
+                v.Parent = plr.Character
+                for i=1,1 do
+                v.RemoteEvent:FireServer(mouse.Hit.LookVector)
+                rs.Stepped:wait()
+                mouse1click()
+                v.Parent = plr.Backpack
+            end
+        end 
+    end
         elseif key == 'k' then
 		for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
 			if v.Name == "Chainsaw" then
@@ -2369,78 +2404,6 @@ game.StarterGui:SetCore("SendNotification", {
     Duration = "DURATION IN SECONDS";
     callbakc = bindableFunction;
 })
-
---Tirar los dos con la B
-local KeyName = "B"
-UserInputService.InputBegan:Connect(function(input, processed)
-	if input.KeyCode.Name == KeyName then
-		while true do
-			if UserInputService:IsKeyDown(Enum.KeyCode[KeyName]) then
-         for i,v in next,plr.Backpack:GetChildren() do
-         if v.Name == 'Grenade' or 'C4' and v:FindFirstChild'RemoteEvent' then
-                v.Parent = plr.Character
-                for i=1,1 do
-                v.RemoteEvent:FireServer(mouse.Hit.LookVector)
-                rs.Stepped:wait()
-                mouse1click()
-                v.Parent = plr.Backpack
-            end
-        end 
-    end
-			else
-				break
-			end
-			Heartbeat:Wait()
-		end
-	end
-end)
-
-local KeyName = "X"
-UserInputService.InputBegan:Connect(function(input, processed)
-	if input.KeyCode.Name == KeyName then
-		while true do
-			if UserInputService:IsKeyDown(Enum.KeyCode[KeyName]) then
-         for i,v in next,plr.Backpack:GetChildren() do
-         if v.Name == 'Grenade' and v:FindFirstChild'RemoteEvent' then
-                v.Parent = plr.Character
-                for i=1,1 do
-                v.RemoteEvent:FireServer(mouse.Hit.LookVector)
-                rs.Stepped:wait()
-                mouse1click()
-                v.Parent = plr.Backpack
-            end
-        end 
-    end
-			else
-				break
-			end
-			Heartbeat:Wait()
-		end
-	end
-end)
-
-local KeyName = "V"
-UserInputService.InputBegan:Connect(function(input, processed)
-	if input.KeyCode.Name == KeyName then
-		while true do
-			if UserInputService:IsKeyDown(Enum.KeyCode[KeyName]) then
-        for _,v in next,plr.Backpack:GetChildren() do
-            if plr.Character and plr.Character:FindFirstChild'Head' and v.Name == 'Kawaii Revolver' and v:FindFirstChild'ReplicateRemote' and not v:FindFirstChild'ClientCD' and v:FindFirstChild'Barrel' and v.Barrel:FindFirstChild'Attachment' then
-                AddCd(v,2)
-                v.Parent = plr.Character
-                Shoot(v.Barrel.Attachment.WorldPosition,mouse.Hit.p,v)
-                mouse2click()
-                rs.Stepped:wait()
-                v.Parent = plr.Backpack
-            end
-        end
-			else
-				break
-			end
-			Heartbeat:Wait()
-		end
-	end
-end)
 
 local KeyName = "P"
 UserInputService.InputBegan:Connect(function(input, processed)
