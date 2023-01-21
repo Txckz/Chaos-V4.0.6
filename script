@@ -93,7 +93,7 @@ local function Shoot(firstPos,nextPos,Revolver)
     end
 end
 
-local Lib = loadstring(game:HttpGet("https://pastebin.com/raw/BJE6ZcKr", true))()
+local Lib = loadstring(game:HttpGet("https://pastebin.com/raw/EbvHc6tE", true))()
 local Table = {}
 local x = Lib:CreateWindow("CHAOS v.4.1.0")
 x:Section("Controls")
