@@ -217,7 +217,7 @@ plr:GetMouse().KeyDown:Connect(function(key)
             spawn(function()
                 dupping = true
                 local c = 1
-                for i = 1,80 do
+                for i = 1,70 do
                     pcall(function()
                         if c>#rep.Weapons:GetChildren() then
                             c = 1
@@ -317,9 +317,8 @@ plr:GetMouse().KeyDown:Connect(function(key)
          if v.Name == 'Grenade' or 'C4' and v:FindFirstChild'RemoteEvent' then
                 v.Parent = plr.Character
                 for i=1,1 do
-                v.RemoteEvent:FireServer(mouse.Hit.LookVector)
+                v:Activate(mouse.Hit.LookVector)
                 rs.Stepped:wait()
-                mouse1click()
                 v.Parent = plr.Backpack
             end
         end 
@@ -531,8 +530,7 @@ plr:GetMouse().KeyDown:Connect(function(key)
          if v.Name == 'C4' or 'Grenade' and v:FindFirstChild'RemoteEvent' then
                 v.Parent = plr.Character
                 for i=1,1 do
-                v:Activate()
-                mouse2click()
+                v.RemoteEvent:FireServer(mouse.Hit.LookVector)
                 v.Parent = plr.Backpack
 				end
 			end
@@ -596,12 +594,11 @@ plr:GetMouse().KeyDown:Connect(function(key)
 		end
         elseif key == 'v' then
         for _,v in next,plr.Backpack:GetChildren() do
-            if plr.Character and plr.Character:FindFirstChild'Head' and v.Name == 'Kawaii Revolver' and v:FindFirstChild'ReplicateRemote' and not v:FindFirstChild'ClientCD' and v:FindFirstChild'Barrel' and v.Barrel:FindFirstChild'Attachment' then
-                AddCd(v,2)
+            if plr.Character and plr.Character:FindFirstChild'Right Arm' and v.Name == 'Kawaii Revolver' and v:FindFirstChild'ReplicateRemote' and not v:FindFirstChild'ClientCD' and v:FindFirstChild'Barrel' and v.Barrel:FindFirstChild'Attachment' then
+                AddCd(v,7)
                 v.Parent = plr.Character
                 Shoot(v.Barrel.Attachment.WorldPosition,mouse.Hit.p,v)
-                mouse2click()
-                rs.Stepped:wait()
+                wait()
                 v.Parent = plr.Backpack
             end
         end
@@ -609,21 +606,21 @@ plr:GetMouse().KeyDown:Connect(function(key)
 		for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
 			if v.Name == "Spiked Trap" then
 				game.Players.LocalPlayer.Character.Humanoid:EquipTool(v)
-				v:Activate()
-				mouse1click()
-				for i=1,2 do
+                for i=1,2 do
+                v:Activate(mouse.Hit)
+                rs.Stepped:wait()
 					game:GetService("RunService").Heartbeat:Wait()
 				   end
 			   end
 		   end
         elseif key == 'x' then
+            rs.Stepped:wait()
          for i,v in next,plr.Backpack:GetChildren() do
          if v.Name == 'Grenade' and v:FindFirstChild'RemoteEvent' then
                 v.Parent = plr.Character
                 for i=1,1 do
-                v.RemoteEvent:FireServer(mouse.Hit.LookVector)
+                v:Activate(mouse.Hit.LookVector)
                 rs.Stepped:wait()
-                mouse1click()
                 v.Parent = plr.Backpack
             end
         end 
@@ -826,8 +823,9 @@ x:Toggle("Place Traps",{location = Table, flag = "Toggle"},function(bool)
 		for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
 			if v.Name == "Spiked Trap" then
 				game.Players.LocalPlayer.Character.Humanoid:EquipTool(v)
-				v:Activate()
-				for i=1,2 do
+                for i=1,1 do
+                v:Activate(mouse.Hit)
+                rs.Stepped:wait()
 					game:GetService("RunService").Heartbeat:Wait()
 				end
 			end
