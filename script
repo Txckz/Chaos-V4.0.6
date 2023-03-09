@@ -1,3 +1,30 @@
+local bindableFunction= Instance.new("BindableFunction")
+
+if not _G.IgnoreList then
+    _G.IgnoreList = {}
+end
+
+local function Create(Object, Properties)
+	local New = Instance.new(Object)
+	for i,v in pairs(Properties) do
+		New[i] = v
+	end
+	return New
+end
+
+local Player = game:GetService("Players").LocalPlayer
+local Mouse = Player:GetMouse()
+
+local Gui = Create("ScreenGui",{Name="Attack V5",ResetOnSpawn=false,Parent=Player.PlayerGui})
+local Frame = Create("Frame",{Parent=Gui,Position = UDim2.new(0.4,0,0.4,0),Size=UDim2.new(0.1,0,0.1,0),BackgroundTransparency=10,BorderSizePixel=0,BackgroundColor3=Color3.new(0,0,0),ZIndex=0})
+local OutlineU = Create("Frame",{Parent=Frame,Position = UDim2.new(0,0,0,0),Size=UDim2.new(1,0,0.01,0),BackgroundTransparency=10,BorderSizePixel=0,BackgroundColor3=Color3.new(0,0,0),ZIndex=0})
+local OutlineD = Create("Frame",{Parent=Frame,Position = UDim2.new(0,0,1,0),Size=UDim2.new(1,0,0.01,0),BackgroundTransparency=10,BorderSizePixel=0,BackgroundColor3=Color3.new(0,0,0),ZIndex=0})
+local OutlineL = Create("Frame",{Parent=Frame,Position = UDim2.new(0,0,0,0),Size=UDim2.new(0.005,0,1,0),BackgroundTransparency=10,BorderSizePixel=0,BackgroundColor3=Color3.new(0,0,0),ZIndex=0})
+local OutlineR = Create("Frame",{Parent=Frame,Position = UDim2.new(1,0,0,0),Size=UDim2.new(0.005,0,1,0),BackgroundTransparency=10,BorderSizePixel=0,BackgroundColor3=Color3.new(0,0,0),ZIndex=0})
+
+local CO = Create("TextButton",{Name="C/O",Parent=Frame,Position=UDim2.new(5.5,5,5.5,-30),Size=UDim2.new(0.5,0,0.3,0),Font=Enum.Font.Oswald,Text="Open",TextScaled=true,TextWrapped=true,BackgroundColor3=Color3.new(255,255,255),BorderSizePixel=0,ZIndex=2})
+
+
 local UserInputService = game:GetService("UserInputService")
 local Heartbeat = game:GetService("RunService").Heartbeat
 local dupping = false
@@ -1306,4 +1333,8 @@ UserInputService.InputBegan:Connect(function(input, processed)
 			Heartbeat:Wait()
 		end
 	end
+end)
+
+CO.MouseButton1Click:Connect(function()
+game:GetService("VirtualInputManager"):SendKeyEvent(true,Enum.KeyCode.F6,false,game)
 end)
