@@ -863,77 +863,11 @@ x:Toggle("Place Traps",{location = Table, flag = "Toggle"},function(bool)
 	end
 end)
 
-x:Section("Weapons")
-
-x:Button("Mace",function()
+x:Dropdown("Dropdown",{location = Table,flag = "Dropdown",search = false --[[AddsSearchBar]], list = {"Mace","Chainsaw","Knife","Pan","Pencil","Baseball Bat","Scythe","Emerald Greatsword","Blood Dagger"} --[[Wont work when PlayerList = true]], PlayerList = false --[[ Turns the list into the players in the server ]]},function()
 	if game.Players.LocalPlayer.Character:FindFirstChild("Loaded") then
 		game.Players.LocalPlayer.Character.Loaded:Destroy()
 	end
-	game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("Menu Screen").RemoteEvent:FireServer("Mace")
-	game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("Menu Screen").Enabled = false
-end)
-
-x:Button("Chainsaw",function()
-	if game.Players.LocalPlayer.Character:FindFirstChild("Loaded") then
-		game.Players.LocalPlayer.Character.Loaded:Destroy()
-	end
-	game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("Menu Screen").RemoteEvent:FireServer("Chainsaw")
-	game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("Menu Screen").Enabled = false
-end)
-
-x:Button("Knife",function()
-	if game.Players.LocalPlayer.Character:FindFirstChild("Loaded") then
-		game.Players.LocalPlayer.Character.Loaded:Destroy()
-	end
-	game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("Menu Screen").RemoteEvent:FireServer("Knife")
-	game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("Menu Screen").Enabled = false
-end)
-
-x:Button("Pan",function()
-	if game.Players.LocalPlayer.Character:FindFirstChild("Loaded") then
-		game.Players.LocalPlayer.Character.Loaded:Destroy()
-	end
-	game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("Menu Screen").RemoteEvent:FireServer("Pan")
-	game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("Menu Screen").Enabled = false
-end)
-
-x:Button("Pencil",function()
-	if game.Players.LocalPlayer.Character:FindFirstChild("Loaded") then
-		game.Players.LocalPlayer.Character.Loaded:Destroy()
-	end
-	game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("Menu Screen").RemoteEvent:FireServer("Pencil")
-	game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("Menu Screen").Enabled = false
-end)
-
-x:Button("Baseball Bat",function()
-	if game.Players.LocalPlayer.Character:FindFirstChild("Loaded") then
-		game.Players.LocalPlayer.Character.Loaded:Destroy()
-	end
-	game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("Menu Screen").RemoteEvent:FireServer("Baseball Bat")
-	game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("Menu Screen").Enabled = false
-end)
-
-x:Button("Scythe",function()
-	if game.Players.LocalPlayer.Character:FindFirstChild("Loaded") then
-		game.Players.LocalPlayer.Character.Loaded:Destroy()
-	end
-	game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("Menu Screen").RemoteEvent:FireServer("Scythe")
-	game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("Menu Screen").Enabled = false
-end)
-
-x:Button("Emerald Greatsword",function()
-	if game.Players.LocalPlayer.Character:FindFirstChild("Loaded") then
-		game.Players.LocalPlayer.Character.Loaded:Destroy()
-	end
-	game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("Menu Screen").RemoteEvent:FireServer("Emerald Greatsword")
-	game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("Menu Screen").Enabled = false
-end)
-
-x:Button("Blood Dagger",function()
-	if game.Players.LocalPlayer.Character:FindFirstChild("Loaded") then
-		game.Players.LocalPlayer.Character.Loaded:Destroy()
-	end
-	game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("Menu Screen").RemoteEvent:FireServer("Blood Dagger")
+	game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("Menu Screen").RemoteEvent:FireServer(Table["Dropdown"])
 	game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("Menu Screen").Enabled = false
 end)
 
