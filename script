@@ -344,11 +344,13 @@ plr:GetMouse().KeyDown:Connect(function(key)
          if v.Name == 'Grenade' or 'C4' and v:FindFirstChild'RemoteEvent' then
                 v.Parent = plr.Character
                 for i=1,1 do
-                v:Activate(mouse.Hit.LookVector)
+                pcall(function() v:Activate(mouse.Hit.LookVector)
+                mouse2click()
                 rs.Stepped:wait()
                 v.Parent = plr.Backpack
-            end
-        end 
+            end)
+        end
+    end
     end
     elseif key == 'l' and plr.Character then
         if not dupping then
@@ -641,16 +643,17 @@ plr:GetMouse().KeyDown:Connect(function(key)
 			   end
 		   end
         elseif key == 'x' then
-            rs.Stepped:wait()
          for i,v in next,plr.Backpack:GetChildren() do
          if v.Name == 'Grenade' and v:FindFirstChild'RemoteEvent' then
                 v.Parent = plr.Character
                 for i=1,1 do
-                v:Activate(mouse.Hit.LookVector)
+                pcall(function() v:Activate(mouse.Hit.LookVector)
+                mouse2click()
                 rs.Stepped:wait()
                 v.Parent = plr.Backpack
-            end
-        end 
+            end)
+        end
+    end
     end
         elseif key == 'k' then
 		for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
@@ -674,17 +677,28 @@ end)
 
 x:Section("Main Features")
 
-x:Button("Crash",function()
-         for i,v in next,plr.Backpack:GetChildren() do
-         if v.Name == 'C4' or 'Grenade' and v:FindFirstChild'RemoteEvent' then
-                v.Parent = plr.Character
-                for i=1,1 do
-                mouse1click()
-                v.RemoteEvent:FireServer(mouse.Hit.LookVector)
-                v.Parent = plr.Backpack
-            end
-      end
- end
+x:Dropdown("Dropdown",{location = Table,flag = "Dropdown",search = false --[[AddsSearchBar]], list = {"Mace","Chainsaw","Knife","Pan","Pencil","Baseball Bat","Scythe","Emerald Greatsword","Blood Dagger"} --[[Wont work when PlayerList = true]], PlayerList = false --[[ Turns the list into the players in the server ]]},function()
+	if game.Players.LocalPlayer.Character:FindFirstChild("Loaded") then
+		game.Players.LocalPlayer.Character.Loaded:Destroy()
+	end
+	game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("Menu Screen").RemoteEvent:FireServer(Table["Dropdown"])
+	game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("Menu Screen").Enabled = false
+end)
+
+x:Bind("Kill Tool Key",{location = Table, flag = "KeyBind", default = Enum.KeyCode.Z},function() -- Automatically stops when the gui is removed
+local Mouse = game.Players.LocalPlayer:GetMouse()
+game:GetService("UserInputService").InputBegan:Connect(function(Input, IsTyping)
+if IsTyping then return end
+if Input.KeyCode == Enum.KeyCode.Z then
+if Mouse.Target.Parent:FindFirstChild("Humanoid") then
+           local Target = Mouse.Target.Parent:FindFirstChild("Humanoid")
+           repeat
+               wait()
+               game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Tool").DamageRemote:FireServer(Target)
+           until Target.Health <= 0
+end
+       end
+end)
 end)
 
 x:Button("Remove arm for crash",function()
@@ -698,6 +712,33 @@ local debounce = false
 		character['Right Arm']:Destroy()
 		debounce = false
 	end
+end)
+
+x:Button("Crash",function()
+         for i,v in next,plr.Backpack:GetChildren() do
+         if v.Name == 'C4' or 'Grenade' and v:FindFirstChild'RemoteEvent' then
+                v.Parent = plr.Character
+                for i=1,1 do
+                mouse1click()
+                v.RemoteEvent:FireServer(mouse.Hit.LookVector)
+                v.Parent = plr.Backpack
+            end
+      end
+ end
+end)
+
+x:Button("Crash v2",function()
+         for i,v in next,plr.Backpack:GetChildren() do
+         if v.Name == 'Grenade' or 'C4' and v:FindFirstChild'RemoteEvent' then
+                v.Parent = plr.Character
+                for i=1,1 do
+                pcall(function() v.RemoteEvent:FireServer(mouse.Hit.LookVector)
+                mouse2click()
+                v.Parent = plr.Backpack
+            end)
+        end
+    end
+    end
 end)
 
 x:Button("Nuke",function()
@@ -861,14 +902,6 @@ x:Toggle("Place Traps",{location = Table, flag = "Toggle"},function(bool)
 		game:GetService("RunService").Heartbeat:Wait()
 	 until not Spamming
 	end
-end)
-
-x:Dropdown("Dropdown",{location = Table,flag = "Dropdown",search = false --[[AddsSearchBar]], list = {"Mace","Chainsaw","Knife","Pan","Pencil","Baseball Bat","Scythe","Emerald Greatsword","Blood Dagger"} --[[Wont work when PlayerList = true]], PlayerList = false --[[ Turns the list into the players in the server ]]},function()
-	if game.Players.LocalPlayer.Character:FindFirstChild("Loaded") then
-		game.Players.LocalPlayer.Character.Loaded:Destroy()
-	end
-	game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("Menu Screen").RemoteEvent:FireServer(Table["Dropdown"])
-	game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("Menu Screen").Enabled = false
 end)
 
 x:Section("Auto Hit")
@@ -1203,20 +1236,6 @@ end)
 
 x:Button("HideBind (F6)",function()
 Notify('Credits!','Press F6 to hide GUI!',15)
-end)
-
-local Mouse = game.Players.LocalPlayer:GetMouse()
-game:GetService("UserInputService").InputBegan:Connect(function(Input, IsTyping)
-if IsTyping then return end
-if Input.KeyCode == Enum.KeyCode.Z then
-if Mouse.Target.Parent:FindFirstChild("Humanoid") then
-           local Target = Mouse.Target.Parent:FindFirstChild("Humanoid")
-           repeat
-               wait()
-               game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Tool").DamageRemote:FireServer(Target)
-           until Target.Health <= 0
-       end
-end
 end)
 
 local Old;
