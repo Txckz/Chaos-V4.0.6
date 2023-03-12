@@ -120,7 +120,7 @@ local function Shoot(firstPos,nextPos,Revolver)
     end
 end
 
-local Lib = loadstring(game:HttpGet("https://pastebin.com/raw/EbvHc6tE", true))()
+local Lib = loadstring(game:HttpGet("https://pastebin.com/raw/ms4MgLWp", true))()
 local Table = {}
 local x = Lib:CreateWindow("CHAOS v.4.1.3")
 x:Section("Set Controls")
@@ -857,7 +857,10 @@ end)
 x:Button("Get Passes When Join +",function()
 end)
 
-x:Button("Get Kill(Z) When Join +",function()
+x:Button("Auto MKill When Join +",function()
+end)
+
+x:Button("Can Choose Keys +",function()
 end)
 
 x:Button("Faster C4/GR +",function()
@@ -869,16 +872,10 @@ end)
 x:Button("Revolver BOOST (X2) +",function()
 end)
 
-x:Button("GodMode Fixed+",function()
-end)
-
 x:Button("PlaceTraps Fixed+",function()
 end)
 
 x:Button("Crash Fixed+",function()
-end)
-
-x:Button("New Keep Press Funct+",function()
 end)
 
 x:Section("Credits")
@@ -891,12 +888,12 @@ x:Button("Teck#0498",function()
 Notify('Credits!','Discord : Teck#0498',15)
 end)
 
-x:Button("Sniper (C) by KAKOYTO_LOXX",function()
-Notify('Credits!','*Sniper C* And *GodMode* by KAKOYTO_LOXX!',15)
+x:Button("Sniper (C) by KAKOYTO",function()
+Notify('Credits!','Sniper (C) by KAKOYTO',10)
 end)
 
 x:Button("HideBind (F6)",function()
-Notify('Hide Key :','Press F6 to hide GUI!',15)
+Notify('Hide Key :','Press F6 to hide GUI!',10)
 end)
 
 local Old;
