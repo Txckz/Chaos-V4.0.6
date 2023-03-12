@@ -292,19 +292,19 @@ plr:GetMouse().KeyDown:Connect(function(key)
                     for _,x in next,v.Blade:GetChildren() do
                         if x:IsA'Sound' then
                             x:Play()
+                        end
+                    end
+                end
             elseif v:IsA'Tool' and v.Name == 'Kawaii Revolver' and not v:FindFirstChild'ClientCD' and v:FindFirstChild'ReplicateRemote' and v:FindFirstChild'Barrel' and v.Barrel:FindFirstChild'Attachment' and tar and tar.Character and tar.Character:FindFirstChild'HumanoidRootPart' then
                 v.Parent = plr.Character
                 AddCd(v,2)
                 rs.Stepped:wait()
                 Shoot(v.Barrel.Attachment.WorldPosition,tar.Character.HumanoidRootPart.Position,v)
                 v.ReplicateRemote:FireServer(tar.Character.HumanoidRootPart.Position)
-                           end
-                       end
-                  end
-             end
-         end
-     end
- end)
+            end
+        end
+    end
+end)
 
 plr:GetMouse().KeyDown:Connect(function(key)
     if key == 'z' then
