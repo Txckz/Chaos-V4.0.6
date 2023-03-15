@@ -368,6 +368,26 @@ x:Dropdown("Choose Weapon",{location = Table,flag = "Dropdown",search = false --
 	game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("Menu Screen").Enabled = false
 end)
 
+x:Dropdown("Give Tool To",{location = Table,flag = "Dropdown",search = true --[[AddsSearchBar]], list = {"1","2","3","4","5","6","7","8","9","0"} --[[Wont work when PlayerList = true]], PlayerList = true --[[ Turns the list into the players in the server ]]},function()
+Target = (Table["Dropdown"])
+
+game.Players.LocalPlayer.Character.Humanoid.Name = 1
+local l = game.Players.LocalPlayer.Character["1"]:Clone()
+l.Parent = game.Players.LocalPlayer.Character
+l.Name = "Humanoid"
+wait()
+game.Players.LocalPlayer.Character["1"]:Destroy()
+game.Workspace.CurrentCamera.CameraSubject = game.Players.LocalPlayer.Character
+game.Players.LocalPlayer.Character.Animate.Disabled = true
+wait()
+game.Players.LocalPlayer.Character.Animate.Disabled = false
+game.Players.LocalPlayer.Character.Humanoid.DisplayDistanceType = "None"
+for i,v in pairs(game:GetService'Players'.LocalPlayer.Backpack:GetChildren())do
+game:GetService("VirtualInputManager"):SendKeyEvent(true,Enum.KeyCode.One,false,game)
+end
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[Target].Character.HumanoidRootPart.CFrame
+   end)
+
 x:Button("Remove arm for crash",function()
 local player = game:GetService("Players")
 local humanoid = player.LocalPlayer.Character
