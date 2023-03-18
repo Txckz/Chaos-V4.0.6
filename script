@@ -441,6 +441,10 @@ x:Button("Nuke",function()
  end
 end)
 
+x:Button("Boost Fps",function()
+loadstring(game:HttpGet(('https://github.com/MarsQQ/ScriptHubScripts/blob/master/FPS%20Boost'),true))()
+end)
+
 x:Button("Night",function()
 game.Lighting:SetMinutesAfterMidnight(0)
 end)
