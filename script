@@ -132,6 +132,7 @@ x:Bind("Drop Grenades",{location = Table, flag = "1", default = Enum.KeyCode.X},
             if v.Name == 'Grenade' then
                 pcall(function()
                     v.Parent = plr.Character
+    plr.Character:FindFirstChildOfClass'Humanoid':LoadAnimation(v.Throw):Play()     
                     v:Activate(mouse.Hit.LookVector)
                     mouse2click()
                     wait()
@@ -156,9 +157,11 @@ x:Bind("Place Traps",{location = Table, flag = "2", default = Enum.KeyCode.N},fu
 x:Bind("Spam Bullets",{location = Table, flag = "3", default = Enum.KeyCode.V},function() -- Automatically stops when the gui is removed
         for _,v in next,plr.Backpack:GetChildren() do
             if plr.Character and plr.Character:FindFirstChild'Right Arm' and v.Name == 'Kawaii Revolver' and v:FindFirstChild'ReplicateRemote' and not v:FindFirstChild'ClientCD' and v:FindFirstChild'Barrel' and v.Barrel:FindFirstChild'Attachment' then
-                AddCd(v,7)
+                AddCd(v,2)
                 v.Parent = plr.Character
+    plr.Character:FindFirstChildOfClass'Humanoid':LoadAnimation(v.Fire):Play()                     
                 Shoot(v.Barrel.Attachment.WorldPosition,mouse.Hit.p,v)
+                v.ReplicateRemote:FireServer(mouse.Hit.p,v)
                 wait()
                 v.Parent = plr.Backpack
             end
@@ -183,11 +186,12 @@ x:Bind("Throw C4/Grenades",{location = Table, flag = "5", default = Enum.KeyCode
          for i,v in next,plr.Backpack:GetChildren() do
          if v.Name == 'Grenade' or 'C4' and v:FindFirstChild'RemoteEvent' then
                 v.Parent = plr.Character
-                for i=1,1 do
+                for i=1,1 do    
+    plr.Character:FindFirstChildOfClass'Humanoid':LoadAnimation(v.Throw):Play() 
                 pcall(function() v:Activate(mouse.Hit.LookVector)
                 mouse2click()
                 rs.Stepped:wait()
-                v.Parent = plr.Backpack
+            v.Parent = plr.Backpack
                end)
             end
         end
@@ -299,8 +303,9 @@ plr:GetMouse().KeyDown:Connect(function(key)
                 v.Parent = plr.Character
                 AddCd(v,2)
                 rs.Stepped:wait()
+                plr.Character:FindFirstChildOfClass'Humanoid':LoadAnimation(v.Fire):Play()
                 Shoot(v.Barrel.Attachment.WorldPosition,tar.Character.HumanoidRootPart.Position,v)
-                v.ReplicateRemote:FireServer(tar.Character.HumanoidRootPart.Position)
+
             end
         end
     end
