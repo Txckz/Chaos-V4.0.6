@@ -305,7 +305,7 @@ plr:GetMouse().KeyDown:Connect(function(key)
                 rs.Stepped:wait()
                 plr.Character:FindFirstChildOfClass'Humanoid':LoadAnimation(v.Fire):Play()
                 Shoot(v.Barrel.Attachment.WorldPosition,tar.Character.HumanoidRootPart.Position,v)
-
+                v.ReplicateRemote:FireServer(tar.Character.HumanoidRootPart.Position)            
             end
         end
     end
