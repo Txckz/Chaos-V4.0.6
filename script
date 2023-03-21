@@ -393,6 +393,21 @@ end
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[Target].Character.HumanoidRootPart.CFrame
    end)
 
+x:Bind("Kill Keybind",{location = Table, flag = "999", default = Enum.KeyCode.Z},function() -- Automatically stops when the gui is removed
+end)
+
+x:Dropdown("Select To Kill Player",{location = Table,flag = "Player",search = true --[[AddsSearchBar]], list = {"1","2","3","4","5","6","7","8","9","0"} --[[Wont work when PlayerList = true]], PlayerList = true --[[ Turns the list into the players in the server ]]},function()
+game:GetService("UserInputService").InputBegan:Connect(function(Input, IsTyping)
+if IsTyping then return end
+if Input.KeyCode == (Table["999"]) then
+game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Tool").DamageRemote:FireServer(Target)
+local A_1 = game:GetService("Workspace"):WaitForChild(Table["Player"]).Humanoid
+local Event = game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Tool").DamageRemote:FireServer(A_1)
+Event:FireServer(A_1)
+end
+end)
+end)
+
 x:Button("Remove arm for crash",function()
 local player = game:GetService("Players")
 local humanoid = player.LocalPlayer.Character
