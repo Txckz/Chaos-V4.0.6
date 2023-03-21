@@ -901,10 +901,7 @@ end)
 x:Button("Faster C4/GR +",function()
 end)
 
-x:Button("GodMode V2 +",function()
-end)
-
-x:Button("Revolver BOOST (X2) +",function()
+x:Button("Hit-Locker Fixed +",function()
 end)
 
 x:Button("PlaceTraps Fixed+",function()
