@@ -400,12 +400,24 @@ x:Dropdown("Select To Kill Player",{location = Table,flag = "Player",search = tr
 game:GetService("UserInputService").InputBegan:Connect(function(Input, IsTyping)
 if IsTyping then return end
 if Input.KeyCode == (Table["999"]) then
+    
 game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Tool").DamageRemote:FireServer(Target)
 local A_1 = game:GetService("Workspace"):WaitForChild(Table["Player"]).Humanoid
 local Event = game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Tool").DamageRemote:FireServer(A_1)
 Event:FireServer(A_1)
+
 end
 end)
+end)
+
+x:Button("Rainbow Sprinting Bar",function()
+local speed = 6
+while true do
+	for i = 0,1,0.001*speed do
+		game:GetService("Players").LocalPlayer.PlayerGui.Sprinting.Frame.Frame.BackgroundColor3 = Color3.fromHSV(i,1,1)
+		wait()
+	end
+end
 end)
 
 x:Button("Remove arm for crash",function()
@@ -498,6 +510,7 @@ end)
 
 
 x:Button("Anti Fling v2",function()
+Notify('Anti Fling','Activanting...',3)
 loadstring(game:HttpGet("https://raw.githubusercontent.com/joshclark756/joshclark756-s-scripts/main/anti%20fling.lua",true))()
 Notify('Anti-Fling','Activated',5)
 end)
