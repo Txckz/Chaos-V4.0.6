@@ -280,9 +280,9 @@ plr:GetMouse().KeyDown:Connect(function(key)
                 end
             end
         end
-        local sp = Instance.new('SelectionBox',n_plr.Character.HumanoidRootPart)
+        local sp = Instance.new('SelectionBox',n_plr.Character.Torso)
         sp.Name = 'SelectedPlayer'
-        sp.Adornee = n_plr.Character.HumanoidRootPart
+        sp.Adornee = n_plr.Character.Torso
         tar = n_plr
     elseif key == 'q' and tar and plr.Character then
         for _,v in next,plr.Character:GetDescendants() do
