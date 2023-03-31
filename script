@@ -400,12 +400,14 @@ x:Dropdown("Select To Kill Player",{location = Table,flag = "Player",search = tr
 game:GetService("UserInputService").InputBegan:Connect(function(Input, IsTyping)
 if IsTyping then return end
 if Input.KeyCode == (Table["999"]) then
-    
 game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Tool").DamageRemote:FireServer(Target)
 local A_1 = game:GetService("Workspace"):WaitForChild(Table["Player"]).Humanoid
+        local Target = A_1
+           repeat
+               wait()
 local Event = game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Tool").DamageRemote:FireServer(A_1)
+          until Target.Health <= 0
 Event:FireServer(A_1)
-
 end
 end)
 end)
@@ -427,27 +429,13 @@ x:Button("Crash",function()
          for i,v in next,plr.Backpack:GetChildren() do
          if v.Name == 'C4' or 'Grenade' and v:FindFirstChild'RemoteEvent' then
                 v.Parent = plr.Character
-                for i=1,1 do
-                mouse1click()
+                for i=1,2 do
+                mouse1click(mouse.Hit)
                 v.RemoteEvent:FireServer(mouse.Hit.LookVector)
                 v.Parent = plr.Backpack
             end
       end
  end
-end)
-
-x:Button("Crash v2",function()
-         for i,v in next,plr.Backpack:GetChildren() do
-         if v.Name == 'Grenade' or 'C4' and v:FindFirstChild'RemoteEvent' then
-                v.Parent = plr.Character
-                for i=1,1 do
-                pcall(function() v.RemoteEvent:FireServer(mouse.Hit.LookVector)
-                mouse2click()
-                v.Parent = plr.Backpack
-            end)
-        end
-    end
-    end
 end)
 
 x:Button("Nuke",function()
@@ -1875,7 +1863,7 @@ local bindableFunction= Instance.new("BindableFunction")
 game.StarterGui:SetCore("SendNotification", {
     Title = "CHAOS v.4.2.0r";
     Text = "CHAOS v.4.2.0r, Was loaded correctly!";
-    Icon = "http://www.roblox.com/asset/?id=5585095509";
+    Icon = "http://www.roblox.com/asset/?id=12790890422";
     Duration = "DURATION IN SECONDS";
     callbakc = bindableFunction;
 })
