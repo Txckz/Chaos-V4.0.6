@@ -1836,6 +1836,8 @@ x:Button("HideBind (F6)",function()
 Notify('Hide Key :','Press F6 to hide GUI!',10)
 end)
 
+game:GetService("ReplicatedStorage"):WaitForChild('Revolver Bullet').DoubleSided = true
+
 local Old;
 Old = hookmetamethod(game, "__namecall", function(...)
    if not checkcaller() and getnamecallmethod() == "UserOwnsGamePassAsync" then
