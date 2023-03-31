@@ -188,10 +188,10 @@ x:Bind("Throw C4/Grenades",{location = Table, flag = "5", default = Enum.KeyCode
                 v.Parent = plr.Character
                 for i=1,1 do    
     plr.Character:FindFirstChildOfClass'Humanoid':LoadAnimation(v.Throw):Play() 
-                pcall(function() v:Activate(mouse.Hit.LookVector)
-                mouse2click()
+                pcall(function() 
+                v.RemoteEvent:FireServer(mouse.Hit.LookVector)
+                mouse1click(mouse.Hit)
                 rs.Stepped:wait()
-            v.Parent = plr.Backpack
                end)
             end
         end
@@ -204,7 +204,7 @@ x:Bind("Spam Tools",{location = Table, flag = "6", default = Enum.KeyCode.L},fun
             spawn(function()
                 dupping = true
                 local c = 1
-                for i = 1,70 do
+                for i = 1,120 do
                     pcall(function()
                         if c>#rep.Weapons:GetChildren() then
                             c = 1
