@@ -122,7 +122,7 @@ end
 
 local Lib = loadstring(game:HttpGet("https://pastebin.com/raw/ms4MgLWp", true))()
 local Table = {}
-local x = Lib:CreateWindow("CHAOS v.4.2.0r")
+local x = Lib:CreateWindow("CHAOS v.4.2.1h.")
 x:Section("Set Controls")
 
 x:Search(Color3.fromRGB(255,0,255) --[[nil = Yellow]]) -- Ez searcher for if you have a lot of things
@@ -1861,8 +1861,8 @@ end
 local bindableFunction= Instance.new("BindableFunction")
  
 game.StarterGui:SetCore("SendNotification", {
-    Title = "CHAOS v.4.2.0r";
-    Text = "CHAOS v.4.2.0r, Was loaded correctly!";
+    Title = "CHAOS v.4.2.1h";
+    Text = "CHAOS v.4.2.1h Was loaded correctly!.";
     Icon = "http://www.roblox.com/asset/?id=12790890422";
     Duration = "DURATION IN SECONDS";
     callbakc = bindableFunction;
