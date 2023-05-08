@@ -120,6 +120,15 @@ local function Shoot(firstPos,nextPos,Revolver)
     end
 end
 
+local oldnamecall
+oldnamecall = hookmetamethod(game, '__namecall', newcclosure(function(self, ...)
+    if getnamecallmethod() == "HttpGet" and checkcaller() then
+        return httpget(...)
+    end
+    return oldnamecall(self, ...)
+end))
+wait(1)
+
 local Lib = loadstring(game:HttpGet("https://pastebin.com/raw/ms4MgLWp", true))()
 local Table = {}
 local x = Lib:CreateWindow("CHAOS v.4.2.1h.")
@@ -262,6 +271,84 @@ end)
 
 --Caratulas Misc.
 
+plr:GetMouse().KeyDown:Connect(function(key)
+    if key == 'r' then
+        tar = nil
+        for _,v in next,workspace:GetDescendants() do
+            if v.Name == 'SelectedPlayer' then
+                v:Destroy()
+            end
+        end
+        local n_plr, dist
+        for _, v in pairs(game.Players:GetPlayers()) do
+            if v ~= plr and plr.Character and plr.Character:FindFirstChild'HumanoidRootPart' then
+                local distance = v:DistanceFromCharacter(plr.Character.HumanoidRootPart.Position)
+                if v.Character and (not dist or distance <= dist) and v.Character:FindFirstChildOfClass'Humanoid' and v.Character:FindFirstChildOfClass'Humanoid'.Health>0 and v.Character:FindFirstChild'HumanoidRootPart' then
+                    dist = distance
+                    n_plr = v
+                end
+            end
+        end
+        local sp = Instance.new('SelectionBox',n_plr.Character.Torso)
+        sp.Name = 'SelectedPlayer'
+        sp.Adornee = n_plr.Character.Torso
+        local speed = 10
+	    for i = 0,1,0.001*speed do
+        sp.Color3 = Color3.fromHSV(i,1,1)
+        wait()
+        sp.Transparency = 0.65
+        tar = n_plr
+        end 
+    elseif key == 'q' and tar and plr.Character then
+        for _,v in next,plr.Character:GetDescendants() do
+            if v:IsA'Tool' and v.Name ~= 'Kawaii Revolver' and not v:FindFirstChild'ClientCD' and v:FindFirstChild'DamageRemote' and v:FindFirstChild'Cooldown' and tar and tar.Character and tar.Character:FindFirstChildOfClass'Humanoid' then
+                AddCd(v,v.Cooldown.Value)
+                v.DamageRemote:FireServer(tar.Character:FindFirstChildOfClass'Humanoid')
+                if v:FindFirstChild'Attack' and plr.Character:FindFirstChildOfClass'Humanoid' then
+                    plr.Character:FindFirstChildOfClass'Humanoid':LoadAnimation(v.Attack):Play()
+                end
+
+game.Workspace.HelloJesus009:WaitForChild('Emerald Greatsword').Blade.SwingSound:Play()
+wait(.1)
+game.Workspace.HelloJesus009:WaitForChild('Emerald Greatsword').Blade.HitSound:Play()
+
+            elseif v:IsA'Tool' and v.Name == 'Kawaii Revolver' and not v:FindFirstChild'ClientCD' and v:FindFirstChild'ReplicateRemote' and v:FindFirstChild'Barrel' and v.Barrel:FindFirstChild'Attachment' and tar and tar.Character and tar.Character:FindFirstChild'HumanoidRootPart' then
+                v.Parent = plr.Character
+                AddCd(v,2)
+                rs.Stepped:wait()
+                plr.Character:FindFirstChildOfClass'Humanoid':LoadAnimation(v.Fire):Play()
+                Shoot(v.Barrel.Attachment.WorldPosition,tar.Character.HumanoidRootPart.Position,v)
+                v.ReplicateRemote:FireServer(tar.Character.HumanoidRootPart.Position)            
+            end
+        end
+    end
+end)
+
+plr:GetMouse().KeyDown:Connect(function(key)
+    if key == 'z' then
+		for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+			if v.Name == "Pan" then
+				game.Players.LocalPlayer.Character.Humanoid:EquipTool(v)
+                for i=1,2 do
+					game:GetService("RunService").Heartbeat:Wait()
+				end
+			end
+		end
+    end
+end)
+
+plr:GetMouse().KeyDown:Connect(function(key)
+    if key == 'z' then
+		for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+			if v.Name == "Blood Dagger" then
+				game.Players.LocalPlayer.Character.Humanoid:EquipTool(v)
+                for i=1,2 do
+					game:GetService("RunService").Heartbeat:Wait()
+				end
+			end
+		end
+    end
+end)
 
 plr:GetMouse().KeyDown:Connect(function(key)
     if key == 'z' then
@@ -1771,11 +1858,6 @@ Old = hookmetamethod(game, "__namecall", function(...)
    end
    return Old(...)
 end)
-
-	originalfunction = hookfunction(wait, function(seconds)
-		if seconds == 2 then return end
-		return originalfunction(seconds)
-	end)
 
 wait(1)
 local function callback(text)
